@@ -12,14 +12,4 @@ public abstract class DaoFactory {
         return factory;
     }
 
-    public abstract UserDao getUserDao();
-
-    public abstract CategoryDao getCategoryDao();
-
-    public abstract BoatDao getBoatDao();
-
-    public abstract VehicleDao getVehicleDao();
-
-    public abstract PhoneDao getPhoneDao();
-
 }
