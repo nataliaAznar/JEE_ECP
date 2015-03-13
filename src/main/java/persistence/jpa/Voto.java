@@ -10,5 +10,9 @@ public class Voto {
 	 @GeneratedValue
 	 private Integer id;
 	 
+	 private Integer puntuacion;
+	 private Integer estudios;
+	 private String ip;
+	
 
 }
