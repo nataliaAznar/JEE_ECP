@@ -15,5 +15,7 @@ public class CreateTables {
 	        Map<String, String> properties = new HashMap<>();
 	        properties.put(PersistenceUnitProperties.DDL_GENERATION,
 	                PersistenceUnitProperties.DROP_AND_CREATE);
+	        EntityManager em = Persistence.createEntityManagerFactory("miwjee", properties)
+	                .createEntityManager();
 	    }
 }
