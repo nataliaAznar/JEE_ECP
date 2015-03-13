@@ -12,6 +12,4 @@ public class Tema {
     
     private String nombre;
     private String pregunta;
-    
-
 }
