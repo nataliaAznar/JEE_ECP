@@ -17,5 +17,5 @@ public class Voto {
 	 private String ip;
 	 @ManyToOne
 	 @JoinColumn
-	 private Tema tema_id;
+	 private Tema tema;
 }
