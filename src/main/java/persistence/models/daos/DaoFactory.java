@@ -11,5 +11,9 @@ public abstract class DaoFactory {
         assert factory != null;
         return factory;
     }
+    
+    public abstract TemaDao getTemaDao();
+    
+    public abstract VotoDao getVotoDao();
 
 }
