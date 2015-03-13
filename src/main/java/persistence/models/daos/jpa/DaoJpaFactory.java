@@ -5,12 +5,7 @@ import javax.persistence.Persistence;
 
 import org.apache.logging.log4j.LogManager;
 
-import es.art83.persistence.models.daos.BoatDao;
-import es.art83.persistence.models.daos.CategoryDao;
-import es.art83.persistence.models.daos.DaoFactory;
-import es.art83.persistence.models.daos.PhoneDao;
-import es.art83.persistence.models.daos.UserDao;
-import es.art83.persistence.models.daos.VehicleDao;
+import persistence.models.daos.DaoFactory;
 
 public class DaoJpaFactory extends DaoFactory {
     private static final String PERSISTENCE_UNIT = "tictactoe";
@@ -26,29 +21,5 @@ public class DaoJpaFactory extends DaoFactory {
         return entityManagerFactory;
     }
 
-    @Override
-    public UserDao getUserDao() {
-        return new UserDaoJpa();
-    }
-
-    @Override
-    public CategoryDao getCategoryDao() {
-        return new CategoryDaoJpa();
-    }
-
-    @Override
-    public BoatDao getBoatDao() {
-        return new BoatDaoJpa();
-    }
-
-    @Override
-    public VehicleDao getVehicleDao() {
-        return new VehicleDaoJpa();
-    }
-
-    @Override
-    public PhoneDao getPhoneDao() {
-        return new PhoneDaoJpa();
-    }
 
 }
