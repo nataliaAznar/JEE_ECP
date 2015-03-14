@@ -32,7 +32,7 @@ public class VotoDaoJpaTest {
 	
 	@Test
 	public void testCreate(){
-		Voto voto1 = new Voto(1, 7, 2, "127.0.0.1", this.tema);
+		Voto voto1 = new Voto(1, 7, 2, "127.0.0.1", new Tema("test2", "test2"));
 		dao.create(voto1);
 		Voto voto2 = dao.read(voto1.getId());
 		assertEquals(voto1, voto2);
@@ -40,6 +40,9 @@ public class VotoDaoJpaTest {
 	
 	@Test
 	public void testRead(){
+		Voto v = dao.read(this.voto.getId());
+		System.out.println(v);
+		System.out.println(v.getTema());
 		assertEquals(this.voto, dao.read(this.voto.getId()));
 	}
 	
