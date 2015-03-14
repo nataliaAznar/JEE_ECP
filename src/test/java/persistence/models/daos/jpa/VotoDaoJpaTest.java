@@ -31,10 +31,10 @@ public class VotoDaoJpaTest {
 	
 	@Test
 	public void testCreate(){
-		Voto voto = new Voto(1, 7, 2, "127.0.0.1", new Tema("test", "test"));
-		dao.create(voto);
-		Voto voto1 = dao.read(1);
-		assertEquals(voto, voto1);
+		Voto voto1 = new Voto(1, 7, 2, "127.0.0.1", new Tema("test", "test"));
+		dao.create(voto1);
+		Voto voto2 = dao.read(1);
+		assertEquals(voto1, voto2);
 	}
 	
 	@Test
