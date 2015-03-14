@@ -17,7 +17,6 @@ public class Tema {
 	}
 
 	public Tema(String nombre, String pregunta) {
-		super();
 		this.nombre = nombre;
 		this.pregunta = pregunta;
 	}
