@@ -81,7 +81,6 @@ public class Voto {
 		assert obj != null;
 		Voto other = (Voto) obj;
 		return this.estudios.equals(other.estudios)&&this.id.equals(other.id)
-				&&this.ip.equals(other.ip)&&this.puntuacion.equals(other.puntuacion)
-				&&this.tema.equals(other.tema);
+				&&this.ip.equals(other.ip)&&this.puntuacion.equals(other.puntuacion);
 	}
 }
