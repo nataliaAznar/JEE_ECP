@@ -67,6 +67,14 @@ public class VotoDaoJpaTest {
 		assertNull(dao.read(this.voto.getId()));
 	}
 	
+	@Test
+	public void testFindAll(){
+		Voto v = new Voto( 6, 1, "127.0.0.1", this.tema);
+		dao.create(v);
+		assertEquals(2, dao.findAll().size());
+		dao.deleteById(v.getId());
+	}
+	
 	@After
 	public void after(){
 		dao.deleteById(this.voto.getId());
