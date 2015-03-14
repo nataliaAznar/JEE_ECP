@@ -28,6 +28,17 @@ public class Voto {
 		this.ip = ip;
 		this.tema = tema;
 	}
+	
+	
+
+	public Voto(Integer id, Integer puntuacion, Integer estudios, String ip,
+			Tema tema) {
+		this.id = id;
+		this.puntuacion = puntuacion;
+		this.estudios = estudios;
+		this.ip = ip;
+		this.tema = tema;
+	}
 
 	public Integer getId() {
 		return id;
@@ -65,5 +76,12 @@ public class Voto {
 		this.tema = tema;
 	}
 	 
-	 
+	@Override
+	public boolean equals(Object obj){
+		assert obj != null;
+		Voto other = (Voto) obj;
+		return this.estudios.equals(other.getEstudios())&&this.id.equals(other.getId())
+				&&this.ip.equals(other.getIp())&&this.puntuacion.equals(other.getPuntuacion())
+				&&this.tema.equals(other.getTema());
+	}
 }
