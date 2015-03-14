@@ -36,10 +36,14 @@ public class VotoDaoJpaTest {
 		dao.create(voto1);
 		Voto voto2 = dao.read(voto1.getId());
 		assertEquals(voto1, voto2);
+		dao.deleteById(voto1.getId());
 	}
 	
 	@Test
 	public void testRead(){
+		Voto v = dao.read(this.voto.getId());
+		System.out.println(v);
+		System.out.println(v.getId());
 		assertEquals(this.voto, dao.read(this.voto.getId()));
 	}
 	
