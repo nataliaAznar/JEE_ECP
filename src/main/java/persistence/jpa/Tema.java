@@ -41,4 +41,10 @@ public class Tema {
 		this.pregunta = pregunta;
 	}
 	
+	@Override
+	public boolean equals(Object obj){
+		assert obj != null;
+		Tema other = (Tema) obj;
+		return this.id.equals(other.id)&&this.nombre.equals(other.nombre)&&this.pregunta.equals(other.pregunta);
+	}
 }
