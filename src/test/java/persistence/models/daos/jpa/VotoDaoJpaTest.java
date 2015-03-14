@@ -27,8 +27,8 @@ public class VotoDaoJpaTest {
 	
 	@Before
 	public void before(){
-		this.voto = new Voto( 3, 1, "127.0.0.1", this.tema);
 		this.tema = new Tema("test", "test");
+		this.voto = new Voto( 3, 1, "127.0.0.1", this.tema);
 		dao = DaoJpaFactory.getFactory().getVotoDao();
 		daoTema = DaoJpaFactory.getFactory().getTemaDao();
 		daoTema.create(this.tema);
@@ -49,8 +49,6 @@ public class VotoDaoJpaTest {
 	@Test
 	public void testRead(){
 		Voto v = dao.read(this.voto.getId());
-		System.out.println(v);
-		System.out.println(v.getId());
 		assertEquals(this.voto, dao.read(this.voto.getId()));
 	}
 	
@@ -59,12 +57,15 @@ public class VotoDaoJpaTest {
 		this.voto.setEstudios(3);
 		this.voto.setPuntuacion(8);
 		dao.update(this.voto);
+		Voto v = dao.read(this.voto.getId());
+		System.out.println(v.getTema());
 		assertEquals(this.voto, dao.read(this.voto.getId()));
 	}
 	
 	@After
 	public void after(){
-//		dao.deleteById(this.voto.getId());
+		daoTema.deleteById(this.voto.getTema().getId());
+		dao.deleteById(this.voto.getId());
 	}
 
 }
