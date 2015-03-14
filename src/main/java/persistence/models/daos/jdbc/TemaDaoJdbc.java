@@ -2,12 +2,12 @@ package persistence.models.daos.jdbc;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import es.art83.persistence.models.entities.Category;
 import persistence.jpa.Tema;
 import persistence.models.daos.TemaDao;
 
@@ -31,46 +31,50 @@ public class TemaDaoJdbc extends GenericDaoJdbc<Tema,Integer>implements TemaDao 
 	            + "%s VARCHAR(255), PRIMARY KEY (%s))";
 
 	    public static String sqlToCreateTable() {
-	        return String.format(SQL_CREATE_TABLE, Tema.TABLE, Tema.ID, Tema.PREGUNTA,
-	                Tema.NOMBRE, Tema.ID);
+	        return String.format(SQL_CREATE_TABLE, Tema.TABLE, Tema.ID, Tema.NOMBRE,
+	                Tema.PREGUNTA, Tema.ID);
 	    }
 
 	    private static final String SQL_INSERT = "INSERT INTO %s (%s,%s,%s) VALUES (%d,'%s','%s')";
 
 	
 	@Override
-	public void create(Tema entity) {
-		try{
-			
-		}
-		catch(SQLException e) {
-			log.error("read: " + e.getMessage());
-		}
-		
+	public void create(Tema tema) {
+		this.updateSql(String.format(SQL_INSERT, Tema.TABLE, Tema.ID, Tema.NOMBRE,
+                Tema.PREGUNTA, tema.getId(), tema.getNombre(), tema.getPregunta()));		
 	}
 
 	@Override
 	public Tema read(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		ResultSet resultSet = this.query(String.format(SQL_SELECT_ID, Tema.TABLE, id));
+        return this.create(resultSet);
 	}
+	
+	private static final String SQL_UPDATE = "UPDATE %s SET %s='%s', %s='%s' WHERE ID=%d";
 
 	@Override
-	public void update(Tema entity) {
-		// TODO Auto-generated method stub
+	public void update(Tema tema) {
+		this.updateSql(String.format(SQL_UPDATE, Tema.TABLE, Tema.NOMBRE, tema.getNombre(),
+        Tema.PREGUNTA, tema.getPregunta(), tema.getId()));
 		
 	}
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
+		this.updateSql(String.format(SQL_DELETE_ID, Tema.TABLE, id));
 		
 	}
 
 	@Override
 	public List<Tema> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Tema> list = new ArrayList<Tema>();
+        ResultSet resultSet = this.query(String.format(SQL_SELECT_ALL, Tema.TABLE));
+        Tema tema = this.create(resultSet);
+        while (tema != null) {
+            list.add(tema);
+            tema = this.create(resultSet);
+        }
+        return list;
 	}
 
 }
