@@ -37,6 +37,19 @@ public class VotoDaoJpaTest {
 		assertEquals(voto, voto1);
 	}
 	
+	@Test
+	public void testRead(){
+		assertEquals(this.voto, dao.read(this.voto.getId()));
+	}
+	
+	@Test
+	public void testUpdate(){
+		this.voto.setEstudios(3);
+		this.voto.setPuntuacion(8);
+		dao.update(this.voto);
+		assertEquals(this.voto, dao.read(this.voto.getId()));
+	}
+	
 	@After
 	public void after(){
 		dao.deleteById(this.voto.getId());
