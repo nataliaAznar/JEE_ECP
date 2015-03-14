@@ -34,8 +34,10 @@ public class TemaDaoJpaTest {
 	
 	@Test
 	public void testCreate(){
-		List<Tema> temas = dao.findAll();
-		assertEquals(temas.get(0), this.tema);
+		Tema tema = new Tema(1,"test1", "test1");
+		dao.create(tema);
+		Tema tema1 = dao.read(1);
+		assertEquals(tema, tema1);
 	}
 	
 	@Test
