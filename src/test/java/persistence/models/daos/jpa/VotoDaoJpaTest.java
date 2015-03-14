@@ -52,7 +52,7 @@ public class VotoDaoJpaTest {
 	
 	@After
 	public void after(){
-		dao.deleteById(this.voto.getId());
+//		dao.deleteById(this.voto.getId());
 	}
 
 }
