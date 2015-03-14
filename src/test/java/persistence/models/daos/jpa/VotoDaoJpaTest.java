@@ -44,11 +44,11 @@ public class VotoDaoJpaTest {
 		Voto voto2 = dao.read(voto1.getId());
 		assertEquals(voto1, voto2);
 		dao.deleteById(voto1.getId());
+		daoTema.deleteById(tema1.getId());
 	}
 	
 	@Test
 	public void testRead(){
-		Voto v = dao.read(this.voto.getId());
 		assertEquals(this.voto, dao.read(this.voto.getId()));
 	}
 	
@@ -57,15 +57,13 @@ public class VotoDaoJpaTest {
 		this.voto.setEstudios(3);
 		this.voto.setPuntuacion(8);
 		dao.update(this.voto);
-		Voto v = dao.read(this.voto.getId());
-		System.out.println(v.getTema());
 		assertEquals(this.voto, dao.read(this.voto.getId()));
 	}
 	
 	@After
 	public void after(){
-		daoTema.deleteById(this.voto.getTema().getId());
 		dao.deleteById(this.voto.getId());
+		daoTema.deleteById(this.voto.getTema().getId());
 	}
 
 }
