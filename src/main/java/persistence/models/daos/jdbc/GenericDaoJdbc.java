@@ -7,7 +7,6 @@ import java.sql.Statement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import es.art83.persistence.models.daos.jdbc.DaoJdbcFactory;
 import persistence.models.daos.GenericDao;
 
 public abstract class GenericDaoJdbc<T, ID> implements GenericDao<T, ID> {
