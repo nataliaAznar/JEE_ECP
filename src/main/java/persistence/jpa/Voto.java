@@ -80,8 +80,8 @@ public class Voto {
 	public boolean equals(Object obj){
 		assert obj != null;
 		Voto other = (Voto) obj;
-		return this.estudios.equals(other.getEstudios())&&this.id.equals(other.getId())
-				&&this.ip.equals(other.getIp())&&this.puntuacion.equals(other.getPuntuacion())
-				&&this.tema.equals(other.getTema());
+		return this.estudios.equals(other.estudios)&&this.id.equals(other.id)
+				&&this.ip.equals(other.ip)&&this.puntuacion.equals(other.puntuacion)
+				&&this.tema.equals(other.tema);
 	}
 }
