@@ -10,13 +10,15 @@ import org.junit.Test;
 import persistence.jpa.Tema;
 import persistence.jpa.Voto;
 import persistence.models.daos.DaoFactory;
+import persistence.models.daos.TemaDao;
 import persistence.models.daos.VotoDao;
 
 public class VotoDaoJpaTest {
 	
 	private VotoDao dao;
+	private TemaDao daoTema;
 	private Voto voto;
-	private Tema tema = new Tema("test", "test");
+	private Tema tema;
 	
 	@BeforeClass
 	public static void beforeClass(){
@@ -26,13 +28,18 @@ public class VotoDaoJpaTest {
 	@Before
 	public void before(){
 		this.voto = new Voto( 3, 1, "127.0.0.1", this.tema);
+		this.tema = new Tema("test", "test");
 		dao = DaoJpaFactory.getFactory().getVotoDao();
+		daoTema = DaoJpaFactory.getFactory().getTemaDao();
+		daoTema.create(this.tema);
 		dao.create(this.voto);
 	}
 	
 	@Test
 	public void testCreate(){
-		Voto voto1 = new Voto(1, 7, 2, "127.0.0.1", new Tema("test2", "test2"));
+		Tema tema1 = new Tema("test2", "test2");
+		daoTema.create(tema1);
+		Voto voto1 = new Voto(1, 7, 2, "127.0.0.1", tema1);
 		dao.create(voto1);
 		Voto voto2 = dao.read(voto1.getId());
 		assertEquals(voto1, voto2);
