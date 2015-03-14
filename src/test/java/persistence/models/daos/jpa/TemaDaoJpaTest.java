@@ -36,7 +36,6 @@ public class TemaDaoJpaTest {
 	public void testCreate(){
 		List<Tema> temas = dao.findAll();
 		assertEquals(temas.get(0), this.tema);
-        assertTrue(temas.size() == 1);
 	}
 	
 	@Test
@@ -56,6 +55,13 @@ public class TemaDaoJpaTest {
 	public void testDelete(){
 		dao.deleteById(this.tema.getId());
 		assertNull(dao.read(this.tema.getId()));
+	}
+	
+	@Test
+	public void testFindAll(){
+		dao.create(new Tema(2,"test2", "test2"));
+		assertEquals(2, dao.findAll().size());
+		dao.deleteById(2);
 	}
 	
 	@After
