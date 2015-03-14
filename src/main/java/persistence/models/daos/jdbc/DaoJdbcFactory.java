@@ -10,6 +10,8 @@ import org.apache.logging.log4j.LogManager;
 import persistence.jpa.Tema;
 import persistence.jpa.Voto;
 import persistence.models.daos.DaoFactory;
+import persistence.models.daos.TemaDao;
+import persistence.models.daos.VotoDao;
 
 public class DaoJdbcFactory extends DaoFactory {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
@@ -44,13 +46,21 @@ public class DaoJdbcFactory extends DaoFactory {
         try {
             Statement statement = getConnection().createStatement();
             statement.executeUpdate(String.format(DROP_TABLE, Tema.TABLE));
-            statement.executeUpdate(String.format(DROP_TABLE, Voto.TABLE));
             statement.executeUpdate(TemaDaoJdbc.sqlToCreateTable());
-            statement.executeUpdate(VotoDaoJdbc.sqlToCreateTable());
         } catch (SQLException e) {
             LogManager.getLogger(DaoJdbcFactory.class).error("Drop tables: " + e.getMessage());
         }
     }
+
+	@Override
+	public TemaDao getTemaDao() {
+		return new TemaDaoJdbc();
+	}
+
+	@Override
+	public VotoDao getVotoDao() {
+		return null;
+	}
 
     
 
