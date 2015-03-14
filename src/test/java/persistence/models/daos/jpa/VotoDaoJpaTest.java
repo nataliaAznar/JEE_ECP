@@ -1,6 +1,7 @@
 package persistence.models.daos.jpa;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import org.junit.After;
 import org.junit.Before;
@@ -58,6 +59,12 @@ public class VotoDaoJpaTest {
 		this.voto.setPuntuacion(8);
 		dao.update(this.voto);
 		assertEquals(this.voto, dao.read(this.voto.getId()));
+	}
+	
+	@Test
+	public void testDelete(){
+		dao.deleteById(this.voto.getId());
+		assertNull(dao.read(this.voto.getId()));
 	}
 	
 	@After
