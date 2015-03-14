@@ -1,5 +1,7 @@
 package persistence.models.daos.jpa;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,13 +18,21 @@ public class TemaDaoJpaTest {
 	
 	@Before
 	public void init(){
-		Tema t = new Tema();
+		temas.add(new Tema("test", "test"));
+		temas.add(new Tema("test1", "test1"));
+		temas.add(new Tema("test2", "test2"));
 	}
 	
 	@Test
 	public void testCreate(){
-		
-		
+		for( Tema tema : this.temas){
+			dao.create(tema);
+		}
+		List<Tema> temas = dao.findAll();
+        for (Tema tema : temas) {
+            assertTrue(this.temas.contains(tema));
+        }
+        assertTrue(temas.size() == this.temas.size());
 	}
 	
 }
