@@ -9,15 +9,18 @@ import org.junit.Before;
 import org.junit.Test;
 
 import persistence.jpa.Tema;
+import persistence.models.daos.DaoFactory;
 import persistence.models.daos.TemaDao;
 
 public class TemaDaoJpaTest {
 
-	private TemaDao dao = DaoJpaFactory.getFactory().getTemaDao();
-	private List<Tema> temas = new ArrayList();
+	private TemaDao dao;
+	private List<Tema> temas = new ArrayList<Tema>();
 	
 	@Before
-	public void init(){
+	public void beforeClass(){
+		DaoFactory.setFactory(new DaoJpaFactory());
+		dao = DaoJpaFactory.getFactory().getTemaDao();
 		temas.add(new Tema("test", "test"));
 		temas.add(new Tema("test1", "test1"));
 		temas.add(new Tema("test2", "test2"));
