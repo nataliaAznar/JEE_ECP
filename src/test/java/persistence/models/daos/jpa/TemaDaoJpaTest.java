@@ -1,6 +1,7 @@
 package persistence.models.daos.jpa;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -41,6 +42,20 @@ public class TemaDaoJpaTest {
 	@Test
 	public void testRead(){
 		assertEquals(this.tema, dao.read(this.tema.getId()));
+	}
+	
+	@Test
+	public void testUpdate(){
+		this.tema.setNombre("test2");
+		this.tema.setPregunta("test2");
+		dao.update(this.tema);
+		assertEquals(this.tema, dao.read(this.tema.getId()));
+	}
+	
+	@Test
+	public void testDelete(){
+		dao.deleteById(this.tema.getId());
+		assertNull(dao.read(this.tema.getId()));
 	}
 	
 	@After
