@@ -16,6 +16,7 @@ public class VotoDaoJpaTest {
 	
 	private VotoDao dao;
 	private Voto voto;
+	private Tema tema = new Tema("test", "test");
 	
 	@BeforeClass
 	public static void beforeClass(){
@@ -24,16 +25,16 @@ public class VotoDaoJpaTest {
 	
 	@Before
 	public void before(){
-		this.voto = new Voto( 3, 1, "127.0.0.1", new Tema("test", "test"));
+		this.voto = new Voto( 3, 1, "127.0.0.1", this.tema);
 		dao = DaoJpaFactory.getFactory().getVotoDao();
 		dao.create(this.voto);
 	}
 	
 	@Test
 	public void testCreate(){
-		Voto voto1 = new Voto(1, 7, 2, "127.0.0.1", new Tema("test", "test"));
+		Voto voto1 = new Voto(1, 7, 2, "127.0.0.1", this.tema);
 		dao.create(voto1);
-		Voto voto2 = dao.read(1);
+		Voto voto2 = dao.read(voto1.getId());
 		assertEquals(voto1, voto2);
 	}
 	
