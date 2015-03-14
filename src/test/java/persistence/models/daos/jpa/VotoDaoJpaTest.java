@@ -40,9 +40,6 @@ public class VotoDaoJpaTest {
 	
 	@Test
 	public void testRead(){
-		Voto v = dao.read(this.voto.getId());
-		System.out.println(v);
-		System.out.println(v.getTema());
 		assertEquals(this.voto, dao.read(this.voto.getId()));
 	}
 	
