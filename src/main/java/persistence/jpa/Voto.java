@@ -8,6 +8,9 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Voto {
+    public static final String TABLE = "voto";
+
+    public static final String ID = "ID";
 	 @Id
 	 @GeneratedValue
 	 private Integer id;
