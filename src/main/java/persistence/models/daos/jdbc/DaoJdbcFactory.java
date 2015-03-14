@@ -7,19 +7,14 @@ import java.sql.Statement;
 
 import org.apache.logging.log4j.LogManager;
 
-import es.art83.persistence.models.daos.BoatDao;
-import es.art83.persistence.models.daos.CategoryDao;
-import es.art83.persistence.models.daos.DaoFactory;
-import es.art83.persistence.models.daos.PhoneDao;
-import es.art83.persistence.models.daos.UserDao;
-import es.art83.persistence.models.daos.VehicleDao;
-import es.art83.persistence.models.entities.Category;
-import es.art83.persistence.models.entities.User;
+import persistence.jpa.Tema;
+import persistence.jpa.Voto;
+import persistence.models.daos.DaoFactory;
 
 public class DaoJdbcFactory extends DaoFactory {
     private static final String DRIVER = "com.mysql.jdbc.Driver";
 
-    private static final String URL = "jdbc:mysql://localhost:3306/jee";
+    private static final String URL = "jdbc:mysql://localhost:3306/miwjee";
 
     private static final String USER = "root";
 
@@ -48,38 +43,15 @@ public class DaoJdbcFactory extends DaoFactory {
     public static void dropAndCreateTables() {
         try {
             Statement statement = getConnection().createStatement();
-            statement.executeUpdate(String.format(DROP_TABLE, User.TABLE));
-            statement.executeUpdate(String.format(DROP_TABLE, Category.TABLE));
-            statement.executeUpdate(CategoryDaoJdbc.sqlToCreateTable());
-            statement.executeUpdate(UserDaoJdbc.sqlToCreateTable());
+            statement.executeUpdate(String.format(DROP_TABLE, Tema.TABLE));
+            statement.executeUpdate(String.format(DROP_TABLE, Voto.TABLE));
+            statement.executeUpdate(TemaDaoJdbc.sqlToCreateTable());
+            statement.executeUpdate(VotoDaoJdbc.sqlToCreateTable());
         } catch (SQLException e) {
             LogManager.getLogger(DaoJdbcFactory.class).error("Drop tables: " + e.getMessage());
         }
     }
 
-    @Override
-    public UserDao getUserDao() {
-        return new UserDaoJdbc();
-    }
-
-    @Override
-    public CategoryDao getCategoryDao() {
-        return new CategoryDaoJdbc();
-    }
-
-    @Override
-    public BoatDao getBoatDao() {
-        return new BoatDaoJdbc();
-    }
-
-    @Override
-    public VehicleDao getVehicleDao() {
-        return new VehicleDaoJdbc();
-    }
-
-    @Override
-    public PhoneDao getPhoneDao() {
-        return new PhoneDaoJdbc();
-    }
+    
 
 }
