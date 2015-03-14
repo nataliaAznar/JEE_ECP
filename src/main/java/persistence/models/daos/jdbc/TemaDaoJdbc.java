@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import es.art83.persistence.models.entities.Category;
 import persistence.jpa.Tema;
 import persistence.models.daos.TemaDao;
 
@@ -24,8 +25,18 @@ public class TemaDaoJdbc extends GenericDaoJdbc<Tema,Integer>implements TemaDao 
 	            log.error("read: " + e.getMessage());
 	        }
 	        return null;
+	 }
+	 
+	 private static final String SQL_CREATE_TABLE = "CREATE TABLE %s (%s INT NOT NULL, %s VARCHAR(255), "
+	            + "%s VARCHAR(255), PRIMARY KEY (%s))";
+
+	    public static String sqlToCreateTable() {
+	        return String.format(SQL_CREATE_TABLE, Tema.TABLE, Tema.ID, Tema.PREGUNTA,
+	                Tema.NOMBRE, Tema.ID);
 	    }
-	
+
+	    private static final String SQL_INSERT = "INSERT INTO %s (%s,%s,%s) VALUES (%d,'%s','%s')";
+
 	
 	@Override
 	public void create(Tema entity) {
