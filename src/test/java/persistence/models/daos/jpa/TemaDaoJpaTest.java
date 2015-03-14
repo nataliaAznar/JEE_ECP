@@ -38,6 +38,7 @@ public class TemaDaoJpaTest {
 		dao.create(tema);
 		Tema tema1 = dao.read(1);
 		assertEquals(tema, tema1);
+		dao.deleteById(1);
 	}
 	
 	@Test
