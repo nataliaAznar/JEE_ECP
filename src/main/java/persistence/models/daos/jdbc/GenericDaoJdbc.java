@@ -41,7 +41,7 @@ public abstract class GenericDaoJdbc<T, ID> implements GenericDao<T, ID> {
             this.log.debug("UpdateSql: " + sql);
         } catch (SQLException e) {
             this.log.error("Update SQL: ---" + sql + "---");
-            this.log.error(e.getMessage());
+            this.log.error(e.getMessage()); 
         }
     }
 
