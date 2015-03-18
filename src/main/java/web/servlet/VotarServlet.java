@@ -19,7 +19,7 @@ public class VotarServlet extends HttpServlet{
             throws ServletException, IOException {
 
         VotarBean votarBean = new VotarBean();
-        request.setAttribute("personaBeanV0", personaBean);
+        request.setAttribute("votarBeanV0", votarBean);
 
         String nombre = request.getParameter("nombre");
         if (nombre != null) {
