@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.art83.web.design.viws.beans.persona.v0.PersonaBean;
+import views.beans.VotarBean;
+
 
 @WebServlet("/jsp/Votar")
 public class VotarServlet extends HttpServlet{
@@ -17,7 +18,7 @@ public class VotarServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        PersonaBean personaBean = new PersonaBean();
+        VotarBean votarBean = new VotarBean();
         request.setAttribute("personaBeanV0", personaBean);
 
         String nombre = request.getParameter("nombre");
