@@ -11,12 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 import views.beans.VotarBean;
 
 
-@WebServlet("/jsp/Votar")
+@WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+		
+		String action = request.getPathInfo().substring(1);
+		
+		String view;
+		
+		switch (action) {
+		case "votaciones":
+			
+			break;
+		}
 
         VotarBean votarBean = new VotarBean();
         request.setAttribute("votarBeanV0", votarBean);

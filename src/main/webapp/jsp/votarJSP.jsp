@@ -10,7 +10,7 @@
 </head>
 <body>
 	<h2>Lista de votaciones</h2>
-	<c:set var="rView" scope="request" value="${votacion}" />
+	<c:set var="rView" scope="request" value="${votaciones}" />
 	
 </body>
 </html>
