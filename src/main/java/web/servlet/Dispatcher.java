@@ -15,7 +15,7 @@ import views.beans.VotarBean;
 @WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	private static String PATH_ROOT_VIEW = "/jsp/";
+	private static String PATH_ROOT_VIEW = "";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
