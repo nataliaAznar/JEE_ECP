@@ -15,7 +15,7 @@
 	<p>Temas:</p>
 		<ul>
 			<c:forEach var="tema" items="${rView.temas}">
-				<li>${tema}</li>
+				<li>${tema.getNombre()}</li>
 			</c:forEach>
 		</ul>
 </body>
