@@ -14,8 +14,8 @@
 	<div>${rView.update()}</div>
 	<p>Temas:</p>
 		<ul>
-			<c:forEach var="votacion" items="${rView.votaciones}">
-				<li>${votacion}</li>
+			<c:forEach var="tema" items="${rView.temas}">
+				<li>${tema}</li>
 			</c:forEach>
 		</ul>
 </body>
