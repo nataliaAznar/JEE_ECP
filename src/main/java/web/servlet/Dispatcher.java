@@ -8,12 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import views.beans.VotacionesBean;
 import views.beans.VotarBean;
 
 
 @WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	private static String PATH_ROOT_VIEW = "/jsp/";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -24,27 +26,14 @@ public class Dispatcher extends HttpServlet{
 		
 		switch (action) {
 		case "votaciones":
-			
+			VotacionesBean votacionesBean = new VotacionesBean();  
+			request.setAttribute(action, votacionesBean);
+			view = action;
 			break;
+		default:
+            view = "home";
 		}
-
-        VotarBean votarBean = new VotarBean();
-        request.setAttribute("votarBeanV0", votarBean);
-
-        String nombre = request.getParameter("nombre");
-        if (nombre != null) {
-            personaBean.setNombre(nombre);
-        }
-
-        String[] roles = request.getParameterValues("roles");
-        if (roles != null) {
-            personaBean.setRoles(roles);
-        }
-
-        personaBean.process();
-
-        this.getServletContext().getRequestDispatcher("/personaViewsV0/" + "personaJSP" + ".jsp")
-                .forward(request, response);
-    }
-
+		this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
+        .forward(request, response);
+	}
 }
