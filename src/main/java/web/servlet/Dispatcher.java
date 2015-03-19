@@ -12,7 +12,7 @@ import views.beans.VotarBean;
 
 
 @WebServlet("/jsp/Votar")
-public class VotarServlet extends HttpServlet{
+public class Dispatcher extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
