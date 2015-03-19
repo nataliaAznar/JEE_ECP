@@ -9,7 +9,7 @@
 <body>
 	<h1>Home JSP</h1>
 	<p>
-		<a href="JEE_ECP/jsp/votaciones">Vista de Votaciones</a>
+		<a href="/JEE_ECP/jsp/votaciones">Vista de Votaciones</a>
 	</p>
 </body>
 </html>
