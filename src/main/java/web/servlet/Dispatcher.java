@@ -19,6 +19,7 @@ public class Dispatcher extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+		System.out.println("ok");
 		
 		String action = request.getPathInfo().substring(1);
 		
