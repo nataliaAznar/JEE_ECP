@@ -4,15 +4,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Home Persona</title>
+<title>Home JSP</title>
 </head>
 <body>
-	<h1>Home Persona: V1</h1>
+	<h1>Home JSP: V1</h1>
 	<p>
-		<a href="/Web/v1/persona">Vista de Persona</a>
-	</p>
-	<p>
-		<a href="/Web/v1/rol">Vista de Rol</a>
+		<a href="/jsp/votaciones">Vista de Votaciones</a>
 	</p>
 </body>
 </html>
