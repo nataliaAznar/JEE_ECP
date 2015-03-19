@@ -15,7 +15,7 @@ public class VotacionesBean implements Serializable{
 	}
 
 	public void update() {
-		this.temas = 
+		this.temas = this.getControllerFactory()
         
     }
 
