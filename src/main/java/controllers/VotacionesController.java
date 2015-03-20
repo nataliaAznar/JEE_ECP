@@ -19,6 +19,10 @@ public class VotacionesController {
 	private static final int ESTUDIOS_BAJOS = 1;
 	private static final int ESTUDIOS_MEDIOS= 2;
 	private static final int ESTUDIOS_ALTOS = 3;
+	private static final int ESTUDIOS_BAJOS_CONT = 4;
+	private static final int ESTUDIOS_MEDIOS_CONT = 5;
+	private static final int ESTUDIOS_ALTOS_CONT = 6;
+	private static final int NUM_ESTUDIOS = 3;
 	
 	
 	public VotacionesController() {
@@ -38,20 +42,42 @@ public class VotacionesController {
 			int idTema = voto.getTema().getId();
 			try{
 				double[] votacion = votaciones.get(idTema);
-				votacion[NUMERO_VOTOS] = votacion[NUMERO_VOTOS]++;
-				votacion[voto.getEstudios()] = (votacion[voto.getEstudios()] + voto.getPuntuacion()) /2;
+				votacion[NUMERO_VOTOS] = votacion[NUMERO_VOTOS] + 1;
+				votacion[voto.getEstudios()] = (votacion[voto.getEstudios()] + voto.getPuntuacion());
+				votacion[voto.getEstudios() + NUM_ESTUDIOS] = votacion[voto.getEstudios() + NUM_ESTUDIOS] + 1;
 				votaciones.set(idTema, votacion);
 			}
 			catch (Exception e ){
-				double[] votacion = new double[4];
+				double[] votacion = new double[7];
 				votacion[NUMERO_VOTOS] = 1;
 				votacion[ESTUDIOS_BAJOS] = 0;
 				votacion[ESTUDIOS_MEDIOS] = 0;
 				votacion[ESTUDIOS_ALTOS] = 0;
+				votacion[ESTUDIOS_BAJOS_CONT] = 0;
+				votacion[ESTUDIOS_MEDIOS_CONT] = 0;
+				votacion[ESTUDIOS_ALTOS_CONT] = 0;
 				votacion[voto.getEstudios()] = voto.getPuntuacion();
+				votacion[voto.getEstudios() + NUM_ESTUDIOS] = 1;
 				votaciones.add(idTema, votacion);
 			}
 			
+		}
+		
+		for(Voto voto: votos){
+			int idTema = voto.getTema().getId();
+			try{
+				double[] votacion = votaciones.get(idTema);
+				if (votacion[ESTUDIOS_BAJOS_CONT] != 0)
+				votacion[ESTUDIOS_BAJOS] = votacion[ESTUDIOS_BAJOS] / votacion[ESTUDIOS_BAJOS_CONT];
+				if (votacion[ESTUDIOS_MEDIOS_CONT] != 0)
+				votacion[ESTUDIOS_MEDIOS] = votacion[ESTUDIOS_MEDIOS] / votacion[ESTUDIOS_MEDIOS_CONT];
+				if (votacion[ESTUDIOS_ALTOS_CONT] != 0)
+				votacion[ESTUDIOS_ALTOS] = votacion[ESTUDIOS_ALTOS] / votacion[ESTUDIOS_ALTOS_CONT];
+				votaciones.add(idTema, votacion);
+			}
+			catch(Exception e){
+				
+			}
 		}
 		return votaciones;
 	}
