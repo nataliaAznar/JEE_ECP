@@ -28,14 +28,6 @@ public class VotacionesBean extends ViewBean implements Serializable{
 	public void setTemas(List<Tema> temas) {
 		this.temas = temas;
 	}
-
-	public List<double[]> getVotaciones() {
-		return votaciones;
-	}
-
-	public void setVotaciones(List<double[]> votaciones) {
-		this.votaciones = votaciones;
-	}
 	
 	public double[] getVotacion(int id){
 		try{

@@ -68,7 +68,6 @@ public class VotacionesController {
 		}
 		
 		for(Integer id: ids){
-			try{
 				double[] votacion = votaciones.get(id);
 				if (votacion[ESTUDIOS_BAJOS_CONT] != 0)
 				votacion[ESTUDIOS_BAJOS] = votacion[ESTUDIOS_BAJOS] / votacion[ESTUDIOS_BAJOS_CONT];
@@ -77,11 +76,8 @@ public class VotacionesController {
 				if (votacion[ESTUDIOS_ALTOS_CONT] != 0)
 				votacion[ESTUDIOS_ALTOS] = votacion[ESTUDIOS_ALTOS] / votacion[ESTUDIOS_ALTOS_CONT];
 				votaciones.add(id, votacion);
-			}
-			catch(Exception e){
-				
-			}
 		}
+		System.out.println(votaciones.size());
 		return votaciones;
 	}
 
