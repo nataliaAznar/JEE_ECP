@@ -36,6 +36,16 @@ public class VotacionesBean extends ViewBean implements Serializable{
 	public void setVotaciones(List<double[]> votaciones) {
 		this.votaciones = votaciones;
 	}
+	
+	public double[] getVotacion(int id){
+		try{
+		return this.votaciones.get(id);
+		}
+		catch (Exception e){
+			double [] empty= {0,0,0,0};
+			return empty;
+		}
+	}
 
 	
 }

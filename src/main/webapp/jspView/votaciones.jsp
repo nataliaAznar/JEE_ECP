@@ -16,12 +16,11 @@
 			<c:forEach var="tema" items="${rView.temas}">
 				<li>${tema.getNombre()}
 					<ul>
-						<c:forEach var="votacion" items="${rView.votaciones}">
+						<c:set var="votacion" value="${rView.getVotacion(temas.getID())}"/>
 							<li>${votacion[0]}</li>
 							<li>${votacion[1]}</li>
 							<li>${votacion[2]}</li>
-							<li>${votacion[3]}</li>
-						</c:forEach>		
+							<li>${votacion[3]}</li>		
 					</ul>
 				</li>
 			</c:forEach>
