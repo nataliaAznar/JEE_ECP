@@ -17,7 +17,7 @@ public class VotacionesBean extends ViewBean implements Serializable{
 	public void update() {
 		VotacionesController votacionesController = this.getControllerFactory().getVotacionesController();
 		this.temas = votacionesController.getTemas();
-    }
+    } 
 
 	public List<Tema> getTemas() {
 		return temas;
