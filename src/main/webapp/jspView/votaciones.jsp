@@ -11,7 +11,6 @@
 <body>
 	<h1>Lista de <b>Votaciones</b></h1>
 	<c:set var="rView" scope="request" value="${votaciones}" />
-	<div>${rView.update()}</div>
 	<p>Temas:</p>
 		<ul>
 			<c:forEach var="tema" items="${rView.temas}">

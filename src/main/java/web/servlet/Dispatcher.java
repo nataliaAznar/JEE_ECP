@@ -26,7 +26,8 @@ public class Dispatcher extends HttpServlet{
 		
 		switch (action) {
 		case "votaciones":
-			VotacionesBean votacionesBean = new VotacionesBean();  
+			VotacionesBean votacionesBean = new VotacionesBean(); 
+			votacionesBean.update();
 			request.setAttribute(action, votacionesBean);
 			view = action;
 			break;
