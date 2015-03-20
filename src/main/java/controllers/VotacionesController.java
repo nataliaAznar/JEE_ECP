@@ -31,29 +31,29 @@ public class VotacionesController {
 		return daoTema.findAll();
 	}
 	
-	public void getVotaciones(){
+	public List<double[]> getVotaciones(){
 		List<Voto> votos = daoVoto.findAll();
-		List<int[]> votaciones = new ArrayList();
+		List<double[]> votaciones = new ArrayList();
 		for(Voto voto: votos){
 			int idTema = voto.getTema().getId();
 			try{
-				int[] votacion = votaciones.get(idTema);
+				double[] votacion = votaciones.get(idTema);
 				votacion[NUMERO_VOTOS] = votacion[NUMERO_VOTOS]++;
-				votacion[voto.getEstudios()] += voto.getPuntuacion();
+				votacion[voto.getEstudios()] = (votacion[voto.getEstudios()] + voto.getPuntuacion()) /2;
 				votaciones.set(idTema, votacion);
 			}
 			catch (Exception e ){
-				int[] votacion = new int[4];
+				double[] votacion = new double[4];
 				votacion[NUMERO_VOTOS] = 1;
 				votacion[ESTUDIOS_BAJOS] = 0;
 				votacion[ESTUDIOS_MEDIOS] = 0;
 				votacion[ESTUDIOS_ALTOS] = 0;
-				
-				
+				votacion[voto.getEstudios()] = voto.getPuntuacion();
+				votaciones.add(idTema, votacion);
 			}
 			
 		}
-		
+		return votaciones;
 	}
 
 }
