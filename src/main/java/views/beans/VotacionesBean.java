@@ -11,6 +11,7 @@ public class VotacionesBean extends ViewBean implements Serializable{
 	
 	private List<Tema> temas;
 	private List<double[]> votaciones;
+	private String[] estudios = {"ESO", "Bachiller", "Universitario"};
 	
 	public VotacionesBean() {
 	}
@@ -37,6 +38,10 @@ public class VotacionesBean extends ViewBean implements Serializable{
 			double [] empty= {0,0,0,0};
 			return empty;
 		}
+	}
+
+	public String[] getEstudios() {
+		return estudios;
 	}
 
 	

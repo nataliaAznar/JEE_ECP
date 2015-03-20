@@ -19,10 +19,7 @@ public class VotacionesController {
 	private static final int ESTUDIOS_BAJOS = 1;
 	private static final int ESTUDIOS_MEDIOS= 2;
 	private static final int ESTUDIOS_ALTOS = 3;
-	private static final int ESTUDIOS_BAJOS_CONT = 4;
-	private static final int ESTUDIOS_MEDIOS_CONT = 5;
-	private static final int ESTUDIOS_ALTOS_CONT = 6;
-	private static final int NUM_ESTUDIOS = 3;
+	private static final int ID = 0;
 	
 	
 	public VotacionesController() {
@@ -38,46 +35,47 @@ public class VotacionesController {
 	public List<double[]> getVotaciones(){
 		List<Voto> votos = daoVoto.findAll();
 		List<double[]> votaciones = new ArrayList();
-		List<Integer> ids = new ArrayList();
+		List<int[]> ids = new ArrayList();
 		for(Voto voto: votos){
 			int idTema = voto.getTema().getId();
-			if ( !ids.contains(idTema))
-				ids.add(idTema);
-			
 			try{
 				double[] votacion = votaciones.get(idTema);
+				int[] datosAuxiliares = ids.get(idTema);
 				votacion[NUMERO_VOTOS] = votacion[NUMERO_VOTOS] + 1;
 				votacion[voto.getEstudios()] = (votacion[voto.getEstudios()] + voto.getPuntuacion());
-				votacion[voto.getEstudios() + NUM_ESTUDIOS] = votacion[voto.getEstudios() + NUM_ESTUDIOS] + 1;
+				datosAuxiliares[voto.getEstudios()] = datosAuxiliares[voto.getEstudios()] + 1;
 				votaciones.set(idTema, votacion);
+				ids.set(idTema, datosAuxiliares);
 			}
-			catch (Exception e ){
+			catch (Exception e ){				
+				int[] datosAuxiliares = new int[3];
 				double[] votacion = new double[7];
 				votacion[NUMERO_VOTOS] = 1;
 				votacion[ESTUDIOS_BAJOS] = 0;
 				votacion[ESTUDIOS_MEDIOS] = 0;
 				votacion[ESTUDIOS_ALTOS] = 0;
-				votacion[ESTUDIOS_BAJOS_CONT] = 0;
-				votacion[ESTUDIOS_MEDIOS_CONT] = 0;
-				votacion[ESTUDIOS_ALTOS_CONT] = 0;
+				datosAuxiliares[ID]=idTema;
+				datosAuxiliares[ESTUDIOS_BAJOS] = 0;
+				datosAuxiliares[ESTUDIOS_MEDIOS] = 0;
+				datosAuxiliares[ESTUDIOS_ALTOS] = 0;
 				votacion[voto.getEstudios()] = voto.getPuntuacion();
-				votacion[voto.getEstudios() + NUM_ESTUDIOS] = 1;
+				datosAuxiliares[voto.getEstudios()] = 1;
 				votaciones.add(idTema, votacion);
+				ids.add(idTema, datosAuxiliares);
 			}
 			
 		}
 		
-		for(Integer id: ids){
-				double[] votacion = votaciones.get(id);
-				if (votacion[ESTUDIOS_BAJOS_CONT] != 0)
-				votacion[ESTUDIOS_BAJOS] = votacion[ESTUDIOS_BAJOS] / votacion[ESTUDIOS_BAJOS_CONT];
-				if (votacion[ESTUDIOS_MEDIOS_CONT] != 0)
-				votacion[ESTUDIOS_MEDIOS] = votacion[ESTUDIOS_MEDIOS] / votacion[ESTUDIOS_MEDIOS_CONT];
-				if (votacion[ESTUDIOS_ALTOS_CONT] != 0)
-				votacion[ESTUDIOS_ALTOS] = votacion[ESTUDIOS_ALTOS] / votacion[ESTUDIOS_ALTOS_CONT];
-				votaciones.add(id, votacion);
+		for(int[] id: ids){
+				double[] votacion = votaciones.get(id[ID]);
+				if (id[ESTUDIOS_BAJOS] != 0)
+				votacion[ESTUDIOS_BAJOS] = votacion[ESTUDIOS_BAJOS] / id[ESTUDIOS_BAJOS];
+				if (id[ESTUDIOS_MEDIOS] != 0)
+				votacion[ESTUDIOS_MEDIOS] = votacion[ESTUDIOS_MEDIOS] / id[ESTUDIOS_MEDIOS];
+				if (id[ESTUDIOS_ALTOS] != 0)
+				votacion[ESTUDIOS_ALTOS] = votacion[ESTUDIOS_ALTOS] / id[ESTUDIOS_ALTOS];
+				votaciones.set(id[ID], votacion);
 		}
-		System.out.println(votaciones.size());
 		return votaciones;
 	}
 
