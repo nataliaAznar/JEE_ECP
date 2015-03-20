@@ -16,7 +16,7 @@
 			<c:forEach var="tema" items="${rView.temas}">
 				<li>${tema.getNombre()}
 					<ul>
-						<c:set var="votacion" value="${rView.getVotacion(temas.getID())}"/>
+						<c:set var="votacion" value="${rView.getVotacion(tema.getId())}"/>
 							<li>${votacion[0]}</li>
 							<li>${votacion[1]}</li>
 							<li>${votacion[2]}</li>
