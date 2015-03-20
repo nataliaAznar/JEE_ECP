@@ -15,11 +15,10 @@ import views.beans.VotarBean;
 @WebServlet("/jsp/*")
 public class Dispatcher extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	private static String PATH_ROOT_VIEW = "";
+	private static String PATH_ROOT_VIEW = "/JEE_ECP/jspView/";
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-		System.out.println("ok");
 		
 		String action = request.getPathInfo().substring(1);
 		
