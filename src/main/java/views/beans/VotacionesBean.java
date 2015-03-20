@@ -10,6 +10,7 @@ public class VotacionesBean extends ViewBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private List<Tema> temas;
+	private List<double[]> votaciones;
 	
 	public VotacionesBean() {
 	}
@@ -17,6 +18,7 @@ public class VotacionesBean extends ViewBean implements Serializable{
 	public void update() {
 		VotacionesController votacionesController = this.getControllerFactory().getVotacionesController();
 		this.temas = votacionesController.getTemas();
+		this.votaciones = votacionesController.getVotaciones();
     } 
 
 	public List<Tema> getTemas() {
@@ -26,8 +28,14 @@ public class VotacionesBean extends ViewBean implements Serializable{
 	public void setTemas(List<Tema> temas) {
 		this.temas = temas;
 	}
-	
-	
+
+	public List<double[]> getVotaciones() {
+		return votaciones;
+	}
+
+	public void setVotaciones(List<double[]> votaciones) {
+		this.votaciones = votaciones;
+	}
 
 	
 }
