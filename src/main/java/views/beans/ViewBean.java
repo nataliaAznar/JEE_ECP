@@ -14,6 +14,8 @@ public abstract class ViewBean {
     }
 
     protected ControllerFactory getControllerFactory() {
+    	if(controllerFactory == null)
+    		controllerFactory = new ControllerFactory();
         return controllerFactory;
     }
 
