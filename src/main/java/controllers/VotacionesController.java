@@ -3,8 +3,6 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.fabric.xmlrpc.base.Array;
-
 import persistence.jpa.Tema;
 import persistence.jpa.Voto;
 import persistence.models.daos.DaoFactory;
@@ -49,7 +47,7 @@ public class VotacionesController {
 			}
 			catch (Exception e ){				
 				int[] datosAuxiliares = new int[4];
-				double[] votacion = new double[7];
+				double[] votacion = new double[4];
 				votacion[NUMERO_VOTOS] = 1;
 				votacion[ESTUDIOS_BAJOS] = 0;
 				votacion[ESTUDIOS_MEDIOS] = 0;
@@ -63,7 +61,6 @@ public class VotacionesController {
 				votaciones.add(idTema, votacion);
 				ids.add(idTema, datosAuxiliares);
 			}
-			
 		}
 		
 		for(int[] id: ids){

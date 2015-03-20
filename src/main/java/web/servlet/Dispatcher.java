@@ -25,14 +25,18 @@ public class Dispatcher extends HttpServlet{
 		String view;
 		
 		switch (action) {
-		case "votaciones":
-			VotacionesBean votacionesBean = new VotacionesBean(); 
-			votacionesBean.update();
-			request.setAttribute(action, votacionesBean);
-			view = action;
-			break;
-		default:
-            view = "home";
+			case "votaciones":
+				VotacionesBean votacionesBean = new VotacionesBean(); 
+				votacionesBean.update();
+				request.setAttribute(action, votacionesBean);
+				view = action;
+				break;
+			case "votar":
+				
+				view = action;
+				break;
+			default:
+	            view = "home";
 		}
 		this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
         .forward(request, response);
