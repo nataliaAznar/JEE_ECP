@@ -48,7 +48,7 @@ public class VotacionesController {
 				ids.set(idTema, datosAuxiliares);
 			}
 			catch (Exception e ){				
-				int[] datosAuxiliares = new int[3];
+				int[] datosAuxiliares = new int[4];
 				double[] votacion = new double[7];
 				votacion[NUMERO_VOTOS] = 1;
 				votacion[ESTUDIOS_BAJOS] = 0;
