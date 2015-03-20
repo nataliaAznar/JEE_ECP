@@ -38,8 +38,12 @@ public class VotacionesController {
 	public List<double[]> getVotaciones(){
 		List<Voto> votos = daoVoto.findAll();
 		List<double[]> votaciones = new ArrayList();
+		List<Integer> ids = new ArrayList();
 		for(Voto voto: votos){
 			int idTema = voto.getTema().getId();
+			if ( !ids.contains(idTema))
+				ids.add(idTema);
+			
 			try{
 				double[] votacion = votaciones.get(idTema);
 				votacion[NUMERO_VOTOS] = votacion[NUMERO_VOTOS] + 1;
@@ -63,17 +67,16 @@ public class VotacionesController {
 			
 		}
 		
-		for(Voto voto: votos){
-			int idTema = voto.getTema().getId();
+		for(Integer id: ids){
 			try{
-				double[] votacion = votaciones.get(idTema);
+				double[] votacion = votaciones.get(id);
 				if (votacion[ESTUDIOS_BAJOS_CONT] != 0)
 				votacion[ESTUDIOS_BAJOS] = votacion[ESTUDIOS_BAJOS] / votacion[ESTUDIOS_BAJOS_CONT];
 				if (votacion[ESTUDIOS_MEDIOS_CONT] != 0)
 				votacion[ESTUDIOS_MEDIOS] = votacion[ESTUDIOS_MEDIOS] / votacion[ESTUDIOS_MEDIOS_CONT];
 				if (votacion[ESTUDIOS_ALTOS_CONT] != 0)
 				votacion[ESTUDIOS_ALTOS] = votacion[ESTUDIOS_ALTOS] / votacion[ESTUDIOS_ALTOS_CONT];
-				votaciones.add(idTema, votacion);
+				votaciones.add(id, votacion);
 			}
 			catch(Exception e){
 				
