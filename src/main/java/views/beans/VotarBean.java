@@ -2,7 +2,7 @@ package views.beans;
 
 import java.io.Serializable;
 
-public class VotarBean implements Serializable {
+public class VotarBean extends ViewBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private int id;

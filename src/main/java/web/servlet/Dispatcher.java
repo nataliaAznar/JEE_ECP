@@ -1,6 +1,8 @@
 package web.servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,7 +34,9 @@ public class Dispatcher extends HttpServlet{
 				view = action;
 				break;
 			case "votar":
-				
+				int id = Integer.parseInt(request.getParameter("id"));
+				VotarBean votarBean = new VotarBean();
+				request.setAttribute(action, votarBean);
 				view = action;
 				break;
 			default:

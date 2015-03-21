@@ -14,7 +14,7 @@
 	<p>Temas:</p>
 		<ul>
 			<c:forEach var="tema" items="${rView.temas}">
-				<li>${tema.getNombre()}
+				<li><a href="/JEE_ECP/jsp/votar?id=${tema.getId()}">${tema.getNombre()}</a>
 					<table>
 						<tr>
 							<th>Número de votos</th>
