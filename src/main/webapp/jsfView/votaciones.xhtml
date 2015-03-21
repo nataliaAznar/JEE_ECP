@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 
+	xmlns:c= "http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Votaciones</title>
+</h:head>
+<h:body> 
+	<h3>Lista de <b>Votaciones</b></h3>
+	<p>Temas:</p>
+	#{votacionesBean.update()}
+	<ul>
+	
+<!-- 		<c:forEach var="tema" items="#{votacionesBean.temas}"> -->
+		<ui:repeat var="tema" scope="request" value="#{votacionesBean.temas}">
+			<li>#{tema.nombre}
+				<table>
+					<tr>
+						<th>Número de votos</th>
+						<ui:repeat var="estudio" value="#{votacionesBean.estudios}">
+							<th>#{estudio}</th>
+						</ui:repeat>
+					</tr>
+					<tr>
+						<c:forEach var="votacion" items="#{votacionesBean.getVotacion(tema.getId())}">
+							<td>#{votacion}</td>
+						</c:forEach>
+					</tr>		
+				</table>
+			</li>
+		</ui:repeat>
+	</ul>
+</h:body>
+</html>
