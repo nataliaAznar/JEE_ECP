@@ -12,7 +12,7 @@ import persistence.models.daos.jpa.DaoJpaFactory;
 
 public class VotacionesController {
 	private TemaDao daoTema;
-	private VotoDao daoVoto;
+	private VotoDao daoVoto; 
 	private static final int NUMERO_VOTOS = 0;
 	private static final int ESTUDIOS_BAJOS = 1;
 	private static final int ESTUDIOS_MEDIOS= 2;
