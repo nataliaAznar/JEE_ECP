@@ -11,6 +11,9 @@ public class VotarBean {
 	private static String[] estudios = {"ESO", "Bachiller", "Universitario"};
 	private static int[] puntuacion = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	
+	private String estudio;
+	private int puntos;
+	
 	public VotarBean() {
 	}
 
@@ -36,6 +39,22 @@ public class VotarBean {
 
 	public static void setPuntuacion(int[] puntuacion) {
 		VotarBean.puntuacion = puntuacion;
+	}
+
+	public String getEstudio() {
+		return estudio;
+	}
+
+	public void setEstudio(String estudio) {
+		this.estudio = estudio;
+	}
+
+	public int getPuntos() {
+		return puntos;
+	}
+
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
 	}
 	
 	
