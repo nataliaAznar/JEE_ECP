@@ -11,12 +11,12 @@
 	<h:form id="f1">
 		<p>Tema:<h:inputText id="name" /></p>
 		<p>Nivel de estudios:</p>
-		<h:selectOneListbox value="#{tags.oneListbox}">
-				<f:selectItems value="#{tags.mapValue}" />
+		<h:selectOneListbox value="#{votarBean}">
+				<f:selectItems value="#{votarBean}" />
 		</h:selectOneListbox>
 		<p>Puntuación:</p>
-		<h:selectOneMenu value="#{tags.oneMenu}">
-				<f:selectItems value="#{tags.mapValue}" />
+		<h:selectOneMenu value="#{votarBean}">
+				<f:selectItems value="#{votarBean}" />
 		</h:selectOneMenu>
 		<h:commandButton value="submit" type="submit" action="#{basicBean.process}" />
 	</h:form>
