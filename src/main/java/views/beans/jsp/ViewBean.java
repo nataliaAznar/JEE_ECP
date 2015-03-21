@@ -1,9 +1,11 @@
 package views.beans.jsp;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
 import controllers.ControllerFactory;
 
+@ManagedBean
 public abstract class ViewBean {
 
     @ManagedProperty(value = "#{controllerFactory}")
