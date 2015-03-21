@@ -16,7 +16,7 @@
 	
 <!-- 		<c:forEach var="tema" items="#{votacionesBean.temas}"> -->
 		<ui:repeat var="tema" scope="request" value="#{votacionesBean.temas}">
-			<li>#{tema.nombre}
+			<li><a href="/JEE_ECP/jsfView/votar.xhtml?id=#{tema.id}">#{tema.nombre}</a>
 				<table>
 					<tr>
 						<th>Número de votos</th>
