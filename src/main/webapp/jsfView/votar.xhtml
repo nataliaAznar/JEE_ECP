@@ -9,13 +9,15 @@
 <h:body>
 	<h3>JSF 2</h3>
 	<h:form id="f1">
-		<p>Name:<h:inputText id="name" /></p>
-		<p>Array[1]: #{basicBean.array[1]}</p>
-		<p>List[1]: #{basicBean.list[1]}</p>
-		<p>Map["uno"]: #{basicBean.map.uno}</p>
-		<p>Se accede a la entidad:#{basicBean.entity.property}</p>
-		<p>Return method: #{basicBean.method(3)}</p>
-		<p>Return method2: #{basicBean.method2()}</p>
+		<p>Tema:<h:inputText id="name" /></p>
+		<p>Nivel de estudios:</p>
+		<h:selectOneListbox value="#{tags.oneListbox}">
+				<f:selectItems value="#{tags.mapValue}" />
+		</h:selectOneListbox>
+		<p>Puntuación:</p>
+		<h:selectOneMenu value="#{tags.oneMenu}">
+				<f:selectItems value="#{tags.mapValue}" />
+		</h:selectOneMenu>
 		<h:commandButton value="submit" type="submit" action="#{basicBean.process}" />
 	</h:form>
 </h:body>
