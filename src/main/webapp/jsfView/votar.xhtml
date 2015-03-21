@@ -9,16 +9,16 @@
 <h:body>
 	<h3>JSF 2</h3>
 	<h:form id="f1">
-		<p>Tema:<h:inputText id="name" /></p>
+		<p>Tema:<h:inputText id="name" value="#{votarBean.tema.nombre}"/></p>
 		<p>Nivel de estudios:</p>
-		<h:selectOneListbox value="#{votarBean}">
-				<f:selectItems value="#{votarBean}" />
+		<h:selectOneListbox value="#{votarBean.estudios}">
+				<f:selectItems value="#{votarBean.mapValue}" />
 		</h:selectOneListbox>
 		<p>Puntuación:</p>
-		<h:selectOneMenu value="#{votarBean}">
-				<f:selectItems value="#{votarBean}" />
+		<h:selectOneMenu value="#{votarBean.puntuacion}">
+				<f:selectItems value="#{votarBean.mapValue}" />
 		</h:selectOneMenu>
-		<h:commandButton value="submit" type="submit" action="#{basicBean.process}" />
+		<h:commandButton value="submit" type="submit" action="#{votarBean.process}" />
 	</h:form>
 </h:body>
 </html>
