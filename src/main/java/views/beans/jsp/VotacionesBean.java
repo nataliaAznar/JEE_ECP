@@ -3,9 +3,12 @@ package views.beans.jsp;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import controllers.VotacionesController;
 import persistence.jpa.Tema;
 
+@ManagedBean
 public class VotacionesBean extends ViewBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
