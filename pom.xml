@@ -70,7 +70,7 @@
 			<version>2.14</version>
 		</dependency>
 	</dependencies>
-  <build>
+	<build>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
