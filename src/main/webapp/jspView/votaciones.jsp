@@ -9,7 +9,7 @@
 <title>Votaciones</title>
 </head>
 <body>
-	<h1>Lista de <b>Votaciones</b></h1>
+	<h3>Lista de <b>Votaciones</b></h3>
 	<c:set var="rView" scope="request" value="${votaciones}" />
 	<p>Temas:</p>
 		<ul>
