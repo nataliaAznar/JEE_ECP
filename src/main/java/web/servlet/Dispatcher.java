@@ -50,7 +50,13 @@ public class Dispatcher extends HttpServlet{
 		String action = request.getPathInfo().substring(1);
         String view = "home";
         switch (action) {
+	        case "votar":
+	        	VotarBean votarBean = new VotarBean();
+	        	
+	        	break;
         
         }
+        this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
+        .forward(request, response);
 	}
 }

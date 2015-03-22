@@ -62,5 +62,9 @@ public class VotarBean {
 	public int getLength() {
 		return length;
 	}
+	
+	public void update(int id){
+		
+	}
 
 }
