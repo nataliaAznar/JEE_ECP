@@ -10,12 +10,14 @@
 </head>
 <body>
 	<h2>Lista de votaciones</h2>
-	<c:set var="rView" scope="request" value="${votaciones}" />
+	<c:set var="rView" scope="request" value="${votar}" />
 	<p>Tema: ${rView.tema.nombre}</p>
 	<p>Nivel de estudios:
-		<h:selectOneListbox value="${rView.estudio}">
-				<f:selectItems value="${rView.estudios}" />
-		</h:selectOneListbox>
+	<select size="${rView.estudios.length }" >
+		<c:forEach var="estudio" items="${rView.estudios}">
+			<option>${estudio}</option>
+		</c:forEach>
+	</select>
 	</p>
 	
 </body>
