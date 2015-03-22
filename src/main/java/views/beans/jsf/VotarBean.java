@@ -6,7 +6,7 @@ import persistence.jpa.Tema;
 
 @ManagedBean
 public class VotarBean {
-	private Tema tema = new Tema("test", "test");
+	private Tema[] temas;
 	
 	private String[] estudios = {"ESO", "Bachiller", "Universitario"};
 	private int[] puntuacion = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -17,14 +17,6 @@ public class VotarBean {
 	private int puntos;
 	
 	public VotarBean() {
-	}
-
-	public Tema getTema() {
-		return tema;
-	}
-
-	public void setTema(Tema tema) {
-		this.tema = tema;
 	}
 
 	public String getEstudio() {
@@ -63,7 +55,7 @@ public class VotarBean {
 		return length;
 	}
 	
-	public void update(int id){
+	public void update(){
 		
 	}
 
