@@ -9,16 +9,25 @@
 <title>Votaciones</title>
 </head>
 <body>
-	<h2>Lista de votaciones</h2>
-	<c:set var="rView" scope="request" value="${votar}" />
-	<p>Tema: ${rView.tema.nombre}</p>
-	<p>Nivel de estudios:
-	<select size="${rView.length}" >
-		<c:forEach var="estudio" items="${rView.estudios}">
-			<option>${estudio}</option>
-		</c:forEach>
-	</select>
-	</p>
-	
+	<c:set var="rView" scope="request" value="${votar}"/>
+	<h2>${rView.tema.nombre}</h2>
+	<p>Tema: ${rView.tema.pregunta}</p>
+	<form action="/JEE_ECP/jsp/votar" method="post">
+		<p>Nivel de estudios:
+			<select size="${rView.length}" name="estudio">
+				<c:forEach var="estudio" items="${rView.estudios}">
+					<option>${estudio}</option>
+				</c:forEach>
+			</select>
+		</p>
+		<p>Puntuación:
+			<select name="puntos">
+				<c:forEach var="punto" items="${rView.puntuacion}">
+					<option>${punto}</option>
+				</c:forEach>
+			</select>
+		</p>
+		<input type="submit" value="Enviar votación" />
+	</form>
 </body>
 </html>

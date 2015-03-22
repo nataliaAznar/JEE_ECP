@@ -43,4 +43,14 @@ public class Dispatcher extends HttpServlet{
 		this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
         .forward(request, response);
 	}
+	
+	@Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+		String action = request.getPathInfo().substring(1);
+        String view = "home";
+        switch (action) {
+        
+        }
+	}
 }
