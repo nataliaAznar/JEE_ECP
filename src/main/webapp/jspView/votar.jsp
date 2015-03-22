@@ -11,8 +11,8 @@
 <body>
 	<c:set var="rView" scope="request" value="${votar}"/>
 	
-	
 	<form action="/JEE_ECP/jsp/votar" method="post">
+		<p>Tema:<p>
 		<p>Nivel de estudios:
 			<select size="${rView.length}" name="estudio">
 				<c:forEach var="estudio" items="${rView.estudios}">
