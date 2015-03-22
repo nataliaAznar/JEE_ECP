@@ -11,6 +11,12 @@
 <body>
 	<h2>Lista de votaciones</h2>
 	<c:set var="rView" scope="request" value="${votaciones}" />
+	<p>Tema: ${rView.tema.nombre}</p>
+	<p>Nivel de estudios:
+		<h:selectOneListbox value="${rView.estudio}">
+				<f:selectItems value="${rView.estudios}" />
+		</h:selectOneListbox>
+	</p>
 	
 </body>
 </html>
