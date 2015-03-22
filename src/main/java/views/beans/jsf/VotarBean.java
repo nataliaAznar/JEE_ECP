@@ -11,6 +11,8 @@ public class VotarBean {
 	private String[] estudios = {"ESO", "Bachiller", "Universitario"};
 	private int[] puntuacion = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	
+	private int length = estudios.length;
+	
 	private String estudio;
 	private int puntos;
 	
@@ -56,7 +58,9 @@ public class VotarBean {
 	public void setPuntuacion(int[] puntuacion) {
 		this.puntuacion = puntuacion;
 	}
-	
-	
+
+	public int getLength() {
+		return length;
+	}
 
 }
