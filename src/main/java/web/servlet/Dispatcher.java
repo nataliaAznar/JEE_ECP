@@ -41,7 +41,7 @@ public class Dispatcher extends HttpServlet{
 				break;
 			default:
 	            view = "home";
-		}
+		} 
 		this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
         .forward(request, response);
 	}
