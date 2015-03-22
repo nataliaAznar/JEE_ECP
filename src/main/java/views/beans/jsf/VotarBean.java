@@ -1,12 +1,18 @@
 package views.beans.jsf;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 
+import controllers.VotarController;
 import persistence.jpa.Tema;
+import views.beans.jsp.ViewBean;
 
 @ManagedBean
-public class VotarBean {
-	private Tema[] temas;
+public class VotarBean extends ViewBean implements Serializable{
+	private static final long serialVersionUID = 1L;
+	private List<Tema> temas;
 	
 	private String[] estudios = {"ESO", "Bachiller", "Universitario"};
 	private int[] puntuacion = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -55,8 +61,18 @@ public class VotarBean {
 		return length;
 	}
 	
+	
+	public List<Tema> getTemas() {
+		return temas;
+	}
+
+	public void setTemas(List<Tema> temas) {
+		this.temas = temas;
+	}
+
 	public void update(){
-		
+		VotarController votarController = this.getControllerFactory().getVotarController();
+		this.temas = votarController.getTemas();
 	}
 
 }
