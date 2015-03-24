@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import controllers.VotarController;
 import persistence.jpa.Tema;
+import utils.Estudios;
 import views.beans.jsp.ViewBean;
 
 @ManagedBean
@@ -22,7 +23,7 @@ public class VotarBean extends ViewBean implements Serializable{
 	private List<Tema> temas;
 	private int idTema;
 	
-	private String[] estudios = {"ESO", "Bachiller", "Universitario"};
+	private Estudios[] estudios = {Estudios.ESO, Estudios.BACHILLER, Estudios.UNIVERSITARIO};
 	private int[] puntuacion = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	
 	private int length = estudios.length;
@@ -55,7 +56,11 @@ public class VotarBean extends ViewBean implements Serializable{
 	}
 
 	public String[] getEstudios() {
-		return estudios;
+		String[] estudiosString = new String[this.length];
+		for( int i = 0; i < this.length; i++){
+			estudiosString[i] = estudios.toString();
+		}
+		return estudiosString;
 	}
 
 	public int[] getPuntuacion() {
@@ -111,10 +116,13 @@ public class VotarBean extends ViewBean implements Serializable{
 		if( this.ip == null ) {
 		    this.ip = req.getRemoteAddr();
 		}
-
-		System.out.println(this.estudio);
-		System.out.println(this.puntos);
-//		this.votarController.addVoto(idTema, estudio, puntos, ip);
+		String[] estudiosString = this.getEstudios();
+		int nivelEstudios = -1;
+		for(int i = 0; i < this.length; i++){
+			if( estudiosString[i].equals(this.estudio))
+				nivelEstudios = i;
+		}
+		this.votarController.addVoto(idTema, nivelEstudios, puntos, ip);
 	}
 
 }
