@@ -60,9 +60,8 @@ public class Dispatcher extends HttpServlet{
 	        case "elegirTema":
 	        	String id = request.getParameter("idTema");
 	        	int idTema = Integer.valueOf(id);
-	        	System.out.println(idTema);
 	        	VotarBean votarBean = new VotarBean();
-				request.setAttribute(action, votarBean);
+				request.setAttribute("votar", votarBean);
 				votarBean.update();
 				votarBean.setIdTema(idTema);
 				view = "votar";
