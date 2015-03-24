@@ -9,8 +9,10 @@
 <body>
 	<h1>Aplicación Votación</h1>
 	<p>
-		<a href="/JEE_ECP/jsp/votaciones">Vista de Votaciones</a>
-		<a href="/JEE_ECP/jsp/votar">Votar</a>
+		<ul>
+			<li><a href="/JEE_ECP/jsp/votaciones">Vista de Votaciones</a></li>
+			<li><a href="/JEE_ECP/jsp/votar">Votar</a></li>
+		</ul>
 	</p>
 </body>
 </html>
