@@ -31,17 +31,6 @@ public class Voto {
 		this.ip = ip;
 		this.tema = tema;
 	}
-	
-	
-
-	public Voto(Integer id, Integer puntuacion, Integer estudios, String ip,
-			Tema tema) {
-		this.id = id;
-		this.puntuacion = puntuacion;
-		this.estudios = estudios;
-		this.ip = ip;
-		this.tema = tema;
-	}
 
 	public Integer getId() {
 		return id;
