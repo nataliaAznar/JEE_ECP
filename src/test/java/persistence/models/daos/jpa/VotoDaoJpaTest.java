@@ -40,7 +40,7 @@ public class VotoDaoJpaTest {
 	public void testCreate(){
 		Tema tema1 = new Tema("test2", "test2");
 		daoTema.create(tema1);
-		Voto voto1 = new Voto(1, 7, 2, "127.0.0.1", tema1);
+		Voto voto1 = new Voto(7, 2, "127.0.0.1", tema1);
 		dao.create(voto1);
 		Voto voto2 = dao.read(voto1.getId());
 		assertEquals(voto1, voto2);
