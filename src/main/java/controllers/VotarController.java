@@ -18,5 +18,9 @@ public class VotarController {
 	public List<Tema> getTemas(){
 		return daoTema.findAll();
 	}
+	
+	public void addVoto(int idTema, int estudios, int puntuación, String ip){
+		
+	}
 
 }
