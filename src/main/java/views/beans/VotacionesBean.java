@@ -1,4 +1,4 @@
-package views.beans.jsp;
+package views.beans;
 
 import java.io.Serializable;
 import java.util.List;

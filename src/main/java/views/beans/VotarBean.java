@@ -1,4 +1,4 @@
-package views.beans.jsf;
+package views.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import controllers.VotarController;
 import persistence.jpa.Tema;
 import utils.Estudios;
-import views.beans.jsp.ViewBean;
 
 @ManagedBean
 @ViewScoped

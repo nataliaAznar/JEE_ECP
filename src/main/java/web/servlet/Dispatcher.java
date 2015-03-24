@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import views.beans.jsf.VotarBean;
-import views.beans.jsp.VotacionesBean;
+import views.beans.VotacionesBean;
+import views.beans.VotarBean;
 
 
 @WebServlet("/jsp/*")

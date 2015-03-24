@@ -1,4 +1,4 @@
-package views.beans.jsp;
+package views.beans;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;

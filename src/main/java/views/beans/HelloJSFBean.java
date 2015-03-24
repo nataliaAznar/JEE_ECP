@@ -1,4 +1,4 @@
-package views.beans.jsf;
+package views.beans;
 
 import javax.faces.bean.ManagedBean;
 
