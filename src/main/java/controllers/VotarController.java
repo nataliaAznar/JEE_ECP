@@ -16,6 +16,7 @@ public class VotarController {
 	public VotarController() {
 		DaoFactory.setFactory(new DaoJpaFactory());
 		this.daoTema = DaoJpaFactory.getFactory().getTemaDao();
+		this.daoVoto = DaoJpaFactory.getFactory().getVotoDao();
 	}
 	
 	public List<Tema> getTemas(){
