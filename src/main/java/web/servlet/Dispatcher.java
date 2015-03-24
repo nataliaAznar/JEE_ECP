@@ -57,9 +57,10 @@ public class Dispatcher extends HttpServlet{
 		String action = request.getPathInfo().substring(1);
         String view = "home";
         switch (action) {
-	        case "votar":
-	        	VotarBean votarBean = new VotarBean();
-	        	
+	        case "elegirTema":
+	        	ElegirTemaBean elegirTema = new ElegirTemaBean();
+	        	String a = request.getParameter("idTema");
+	        	System.out.println(a);
 	        	break;
         
         }
