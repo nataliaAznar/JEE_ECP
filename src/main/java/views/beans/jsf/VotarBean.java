@@ -31,7 +31,7 @@ public class VotarBean extends ViewBean implements Serializable{
 
 	
 	public VotarBean() {
-	} 
+	}
 
 	public void setEstudio(String estudio) {
 		this.estudio = estudio;
