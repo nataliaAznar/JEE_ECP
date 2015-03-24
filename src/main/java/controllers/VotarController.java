@@ -19,7 +19,7 @@ public class VotarController {
 		return daoTema.findAll();
 	}
 	
-	public void addVoto(int idTema, int estudios, int puntuación, String ip){
+	public void addVoto(int idTema, int estudios, int puntuacion, String ip){
 		
 	}
 
