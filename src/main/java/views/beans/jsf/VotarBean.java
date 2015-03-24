@@ -1,6 +1,7 @@
 package views.beans.jsf;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -55,10 +56,10 @@ public class VotarBean extends ViewBean implements Serializable{
 		return this.puntos;
 	}
 
-	public String[] getEstudios() {
-		String[] estudiosString = new String[this.length];
-		for( int i = 0; i < this.length; i++){
-			estudiosString[i] = estudios.toString();
+	public List<String> getEstudios() {
+		List<String> estudiosString = new ArrayList<String>();
+		for( Estudios estudio: this.estudios){
+			estudiosString.add(estudio.toString());
 		}
 		return estudiosString;
 	}
@@ -110,19 +111,16 @@ public class VotarBean extends ViewBean implements Serializable{
         disabledVote = idTema == -1;
     }
 	
-	public void process(){
+	public String process(){
 		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
 		this.ip = req.getHeader("X-FORWARDED-FOR");
 		if( this.ip == null ) {
 		    this.ip = req.getRemoteAddr();
 		}
-		String[] estudiosString = this.getEstudios();
-		int nivelEstudios = -1;
-		for(int i = 0; i < this.length; i++){
-			if( estudiosString[i].equals(this.estudio))
-				nivelEstudios = i;
-		}
+		List<String> estudiosString = this.getEstudios();
+		int nivelEstudios = estudiosString.indexOf(this.estudio);
 		this.votarController.addVoto(idTema, nivelEstudios, puntos, ip);
+		return "home";
 	}
 
 }
