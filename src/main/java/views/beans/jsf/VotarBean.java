@@ -6,6 +6,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import controllers.VotarController;
 import persistence.jpa.Tema;
@@ -15,6 +17,8 @@ import views.beans.jsp.ViewBean;
 @ViewScoped
 public class VotarBean extends ViewBean implements Serializable{
 	private static final long serialVersionUID = 1L;
+	VotarController votarController = this.getControllerFactory().getVotarController();
+	
 	private List<Tema> temas;
 	private int idTema;
 	
@@ -22,10 +26,11 @@ public class VotarBean extends ViewBean implements Serializable{
 	private int[] puntuacion = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 	
 	private int length = estudios.length;
-	private String pregunta;
 	
+	private String pregunta;
 	private String estudio;
 	private int puntos;
+	private String ip;
 	
 	private boolean disabledVote;
 
@@ -88,7 +93,6 @@ public class VotarBean extends ViewBean implements Serializable{
 
 	@PostConstruct
     public void update() {
-		VotarController votarController = this.getControllerFactory().getVotarController();
 		this.temas = votarController.getTemas();
         this.temas.add(0, new Tema(-1, "Elige", ""));
         this.idTema = -1;
@@ -102,7 +106,15 @@ public class VotarBean extends ViewBean implements Serializable{
     }
 	
 	public void process(){
-		
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		this.ip = req.getHeader("X-FORWARDED-FOR");
+		if( this.ip == null ) {
+		    this.ip = req.getRemoteAddr();
+		}
+
+		System.out.println(this.estudio);
+		System.out.println(this.puntos);
+//		this.votarController.addVoto(idTema, estudio, puntos, ip);
 	}
 
 }
