@@ -15,6 +15,7 @@
 		<p>Pregunta: ${rView.pregunta}
 		</p>
 		
+		<input type="hidden" name="id" value="${rView.idTema}"/>
 		<p>Nivel de estudios:
 			<select size="${rView.length}" name="estudio">
 				<c:forEach var="estudio" items="${rView.estudios}">

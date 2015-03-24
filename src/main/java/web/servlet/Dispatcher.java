@@ -56,15 +56,26 @@ public class Dispatcher extends HttpServlet{
             throws ServletException, IOException {
 		String action = request.getPathInfo().substring(1);
         String view = "home";
+        String id;
+        int idTema;
+        VotarBean votarBean = new VotarBean();
         switch (action) {
 	        case "elegirTema":
-	        	String id = request.getParameter("idTema");
-	        	int idTema = Integer.valueOf(id);
-	        	VotarBean votarBean = new VotarBean();
+	        	id = request.getParameter("idTema");
+	        	idTema = Integer.valueOf(id);
 				request.setAttribute("votar", votarBean);
 				votarBean.update();
 				votarBean.setIdTema(idTema);
 				view = "votar";
+	        	break;
+	        case "votar":
+	        	votarBean.update();
+	        	id = request.getParameter("id");
+	        	votarBean.setIdTema(Integer.valueOf(id));
+	        	votarBean.setEstudio(request.getParameter("estudio"));
+	        	String puntos = request.getParameter("puntos");
+	        	votarBean.setPuntos(Integer.valueOf(puntos));
+	        	votarBean.process();
 	        	break;
         
         }
