@@ -58,9 +58,14 @@ public class Dispatcher extends HttpServlet{
         String view = "home";
         switch (action) {
 	        case "elegirTema":
-	        	ElegirTemaBean elegirTema = new ElegirTemaBean();
-	        	String a = request.getParameter("idTema");
-	        	System.out.println(a);
+	        	String id = request.getParameter("idTema");
+	        	int idTema = Integer.valueOf(id);
+	        	System.out.println(idTema);
+	        	VotarBean votarBean = new VotarBean();
+				request.setAttribute(action, votarBean);
+				votarBean.update();
+				votarBean.setIdTema(idTema);
+				view = "votar";
 	        	break;
         
         }
