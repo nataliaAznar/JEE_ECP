@@ -96,6 +96,21 @@ public class VotarBean extends ViewBean implements Serializable{
 		return disabledVote;
 	}
 
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public String getIp() {
+		if(this.ip == null){
+			HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+			this.ip = req.getHeader("X-FORWARDED-FOR");
+			if( this.ip == null ) {
+			    this.ip = req.getRemoteAddr();
+			}
+		}
+		return this.ip;
+	}
+
 	@PostConstruct
     public void update() {
 		this.temas = votarController.getTemas();
@@ -111,11 +126,7 @@ public class VotarBean extends ViewBean implements Serializable{
     }
 	
 	public String process(){
-		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-		this.ip = req.getHeader("X-FORWARDED-FOR");
-		if( this.ip == null ) {
-		    this.ip = req.getRemoteAddr();
-		}
+		ip = this.getIp();
 		List<String> estudiosString = this.getEstudios();
 		int nivelEstudios = estudiosString.indexOf(this.estudio);
 		this.votarController.addVoto(idTema, nivelEstudios, puntos, ip);

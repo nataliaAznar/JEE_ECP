@@ -75,6 +75,7 @@ public class Dispatcher extends HttpServlet{
 	        	votarBean.setEstudio(request.getParameter("estudio"));
 	        	String puntos = request.getParameter("puntos");
 	        	votarBean.setPuntos(Integer.valueOf(puntos));
+	        	votarBean.setIp(request.getRemoteAddr());
 	        	votarBean.process();
 	        	break;
         
