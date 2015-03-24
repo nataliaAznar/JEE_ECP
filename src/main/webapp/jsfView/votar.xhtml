@@ -9,11 +9,17 @@
 <h:body> 
 	<h3>Votar</h3>
 	<h:form id="f1">
+		<p>Tema:
 		<h:selectOneMenu value="#{votarBean.idTema}">
 			<f:selectItems value="#{votarBean.temas}" var="tema"
 				itemValue="#{tema.id}" itemLabel="#{tema.nombre}" />
-			<f:ajax render="question vote submit" />
+			<f:ajax render="pregunta" />
 		</h:selectOneMenu>
+		</p>
+		
+		<p><h:outputText value="Pregunta: " />
+			<h:outputText id="pregunta" value="#{votarBean.pregunta}" />
+		</p>
 		
 		<p>Nivel de estudios:
 			<h:selectOneListbox value="#{votarBean.estudio}">

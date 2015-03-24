@@ -33,49 +33,36 @@ public class VotarBean extends ViewBean implements Serializable{
 	public VotarBean() {
 	}
 
-	public String getEstudio() {
-		return estudio;
-	}
-
 	public void setEstudio(String estudio) {
 		this.estudio = estudio;
 	}
-
-	public int getPuntos() {
-		return puntos;
+	
+	public String getEstudio() {
+		return this.estudio;
 	}
 
 	public void setPuntos(int puntos) {
 		this.puntos = puntos;
+	}
+	
+	public int getPuntos() {
+		return this.puntos;
 	}
 
 	public String[] getEstudios() {
 		return estudios;
 	}
 
-	public void setEstudios(String[] estudios) {
-		this.estudios = estudios;
-	}
-
 	public int[] getPuntuacion() {
 		return puntuacion;
-	}
-
-	public void setPuntuacion(int[] puntuacion) {
-		this.puntuacion = puntuacion;
 	}
 
 	public int getLength() {
 		return length;
 	}
 	
-	
 	public List<Tema> getTemas() {
 		return temas;
-	}
-
-	public void setTemas(List<Tema> temas) {
-		this.temas = temas;
 	}
 	
 	public int getIdTema() {
