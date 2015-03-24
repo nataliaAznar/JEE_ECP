@@ -13,7 +13,7 @@
 		<h:selectOneMenu value="#{votarBean.idTema}">
 			<f:selectItems value="#{votarBean.temas}" var="tema"
 				itemValue="#{tema.id}" itemLabel="#{tema.nombre}" />
-			<f:ajax render="pregunta" />
+			<f:ajax render="pregunta estudios puntuacion submit" />
 		</h:selectOneMenu>
 		</p>
 		
@@ -22,16 +22,17 @@
 		</p>
 		
 		<p>Nivel de estudios:
-			<h:selectOneListbox value="#{votarBean.estudio}">
+			<h:selectOneListbox id="estudios" value="#{votarBean.estudio}" disabled="#{votarBean.disabledVote}">
 					<f:selectItems value="#{votarBean.estudios}" />
 			</h:selectOneListbox>
 		</p>
 		<p>Puntuación:
-			<h:selectOneMenu value="#{votarBean.puntos}">
+			<h:selectOneMenu id="puntuacion" value="#{votarBean.puntos}" disabled="#{votarBean.disabledVote}">
 					<f:selectItems value="#{votarBean.puntuacion}" />
 			</h:selectOneMenu>
 		</p>
-		<h:commandButton value="submit" type="submit" action="#{votarBean.process}" />
+		<h:commandButton value="submit" id="submit" type="submit" disabled="#{votarBean.disabledVote}" 
+		action="#{votarBean.process}" />
 	</h:form>
 </h:body>
 </html>
