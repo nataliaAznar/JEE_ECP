@@ -11,7 +11,7 @@
 	<p>
 		<ul>
 			<li><a href="/JEE_ECP/jsp/votaciones">Vista de Votaciones</a></li>
-			<li><a href="/JEE_ECP/jsp/votar">Votar</a></li>
+			<li><a href="/JEE_ECP/jsp/elegirTema">Votar</a></li>
 		</ul>
 	</p>
 </body>
