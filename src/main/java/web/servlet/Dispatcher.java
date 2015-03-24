@@ -32,7 +32,6 @@ public class Dispatcher extends HttpServlet{
 				view = action;
 				break;
 			case "votar":
-				int id = Integer.parseInt(request.getParameter("id"));
 				VotarBean votarBean = new VotarBean();
 				request.setAttribute(action, votarBean);
 				votarBean.update();

@@ -12,7 +12,18 @@
 	<c:set var="rView" scope="request" value="${votar}"/>
 	
 	<form action="/JEE_ECP/jsp/votar" method="post">
-		<p>Tema:<p>
+		<p>Tema:
+			<select name="idTema" >
+				<c:forEach var="tema" items="${rView.temas}">
+					<option value="${tema.id}">${tema.nombre}</option>
+				</c:forEach>
+			</select>
+		</p>
+		
+		<p> Pregunta: 
+			<div id="pregunta">${rView.pregunta}</div>
+		</p>
+		
 		<p>Nivel de estudios:
 			<select size="${rView.length}" name="estudio">
 				<c:forEach var="estudio" items="${rView.estudios}">
