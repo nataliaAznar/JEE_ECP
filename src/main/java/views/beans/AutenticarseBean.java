@@ -6,14 +6,14 @@ import java.util.List;
 import persistence.jpa.Tema;
 import controllers.EliminarTemaController;
 
-public class ElegirTemaEliminarBean extends ViewBean implements Serializable{
+public class AutenticarseBean extends ViewBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private EliminarTemaController eliminarTemaController = new EliminarTemaController();
 	
 	private List<Tema> temas;
 	private int idTema;
 	
-	public ElegirTemaEliminarBean() {
+	public AutenticarseBean() {
 	}
 
 	public EliminarTemaController getEliminarTemaController() {
