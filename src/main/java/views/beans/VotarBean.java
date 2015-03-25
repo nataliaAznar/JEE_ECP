@@ -18,7 +18,7 @@ import utils.Estudios;
 @ViewScoped
 public class VotarBean extends ViewBean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	VotarController votarController = this.getControllerFactory().getVotarController();
+	private VotarController votarController = this.getControllerFactory().getVotarController();
 	
 	private List<Tema> temas;
 	private int idTema;
