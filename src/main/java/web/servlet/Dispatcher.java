@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import views.beans.AñadirTemaBean;
 import views.beans.ElegirTemaBean;
 import views.beans.VotacionesBean;
 import views.beans.VotarBean;
@@ -44,6 +45,11 @@ public class Dispatcher extends HttpServlet{
 				votarBean.update();
 				view = action;
 				break;
+			case "añadirTema":
+				AñadirTemaBean añadirTemaBean= new AñadirTemaBean();
+				request.setAttribute(action, añadirTemaBean);
+				view = action;
+				break;
 			default:
 	            view = "home";
 		} 
@@ -78,7 +84,11 @@ public class Dispatcher extends HttpServlet{
 	        	votarBean.setIp(request.getRemoteAddr());
 	        	votarBean.process();
 	        	break;
-        
+	        case "añadirTema":
+	        	AñadirTemaBean añadirTemaBean= new AñadirTemaBean();
+	        	añadirTemaBean.setNombre(request.getParameter("nombre"));
+	        	añadirTemaBean.setPregunta(request.getParameter("pregunta"));
+	        	añadirTemaBean.process();
         }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
         .forward(request, response);
