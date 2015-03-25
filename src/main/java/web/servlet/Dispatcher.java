@@ -52,10 +52,9 @@ public class Dispatcher extends HttpServlet{
 				request.setAttribute(action, añadirTemaBean);
 				view = action;
 				break;
-			case "elegirTemaEliminar":
-				AutenticarseBean elegirTemaEliminarBean = new AutenticarseBean();
-				request.setAttribute(action, elegirTemaEliminarBean);
-				elegirTemaEliminarBean.update();
+			case "autenticarse":
+				AutenticarseBean autenticarseBean = new AutenticarseBean();
+				request.setAttribute(action, autenticarseBean);
 				view = action;
 				break;
 			case "eliminarTema":
