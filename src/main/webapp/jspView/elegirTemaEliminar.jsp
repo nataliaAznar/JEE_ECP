@@ -11,7 +11,7 @@
 <body>
 	<c:set var="rView" scope="request" value="${elegirTemaEliminar}"/>
 
-	<form action="/JEE_ECP/jsp/elegirTema" method="post">
+	<form action="/JEE_ECP/jsp/eliminarTema" method="post">
 		<p>Tema:
 			<select name="idTema" >
 				<c:forEach var="tema" items="${rView.temas}">
