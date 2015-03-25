@@ -13,7 +13,7 @@
 			<li><a href="/JEE_ECP/jsp/votaciones">Vista de Votaciones</a></li>
 			<li><a href="/JEE_ECP/jsp/elegirTema">Votar</a></li>
 			<li><a href="/JEE_ECP/jsp/añadirTema">Añadir Tema</a></li>
-			<li><a href="/JEE_ECP/jsp/autenticarser">Eliminar Tema</a></li>
+			<li><a href="/JEE_ECP/jsp/autenticarse">Eliminar Tema</a></li>
 		</ul>
 	</p>
 </body>
