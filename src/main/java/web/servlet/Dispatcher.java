@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import views.beans.AñadirTemaBean;
 import views.beans.ElegirTemaBean;
+import views.beans.ElegirTemaEliminarBean;
 import views.beans.VotacionesBean;
 import views.beans.VotarBean;
 
@@ -48,6 +49,12 @@ public class Dispatcher extends HttpServlet{
 			case "añadirTema":
 				AñadirTemaBean añadirTemaBean= new AñadirTemaBean();
 				request.setAttribute(action, añadirTemaBean);
+				view = action;
+				break;
+			case "elegirTemaEliminar":
+				ElegirTemaEliminarBean elegirTemaEliminarBean = new ElegirTemaEliminarBean();
+				request.setAttribute(action, elegirTemaEliminarBean);
+				elegirTemaEliminarBean.update();
 				view = action;
 				break;
 			default:
