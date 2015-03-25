@@ -11,20 +11,20 @@
  	<h:form id="eliminarTema">
 	 	<p>Introduzca el identificador:
 			<h:inputSecret id="identificador" value="#{eliminarTemaBean.identificadorIntroducido}">
-				<f:ajax execute="@this" render="errorText" />
+				<f:ajax execute="@this" render="errorText tema" />
 			</h:inputSecret>
 		</p>
 		<p><h:outputText id="errorText" value="#{eliminarTemaBean.errorText}" /></p>
 		
 		<p>Tema:
-		<h:selectOneMenu value="#{eliminarTemaBean.idTema}">
+		<h:selectOneMenu id = "tema" value="#{eliminarTemaBean.idTema}" disabled="#{eliminarTemaBean.disabledTema}">
 			<f:selectItems value="#{eliminarTemaBean.temas}" var="tema"
 				itemValue="#{tema.id}" itemLabel="#{tema.nombre}" />
-			<f:ajax render="pregunta estudios puntuacion submit" />
+			<f:ajax render="submit" />
 		</h:selectOneMenu>
 		</p>
 		
-		<h:commandButton value="submit" id="submit" type="submit" 
+		<h:commandButton value="Eliminar" id="submit" type="submit" disabled="#{eliminarTemaBean.disabledDelete}"
 		action="#{eliminarTemaBean.process()}" />
  	</h:form>
 </h:body>
