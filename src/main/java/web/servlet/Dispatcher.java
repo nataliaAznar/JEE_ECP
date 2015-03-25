@@ -106,7 +106,7 @@ public class Dispatcher extends HttpServlet{
 	        case "autenticarse":
 	        	AutenticarseBean autenticarseBean = new AutenticarseBean();
 	        	String identificador = request.getParameter("identificadorIntroducido");
-	        	autenticarseBean.setIdentificadorIntroducido(Integer.getInteger(identificador));
+	        	autenticarseBean.setIdentificadorIntroducido(Integer.valueOf(identificador));
 	        	view = autenticarseBean.process();
 	        	if( view.equals("autenticarse")){
 	        		request.setAttribute(view, autenticarseBean);
