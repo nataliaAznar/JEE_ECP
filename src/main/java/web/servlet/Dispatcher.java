@@ -114,6 +114,7 @@ public class Dispatcher extends HttpServlet{
 	        	else{
 	        		EliminarTemaBean eliminarTemaBean = new EliminarTemaBean();
 	        		request.setAttribute(view, eliminarTemaBean);
+	        		eliminarTemaBean.update();
 	        	}
 	        	break;
         }
