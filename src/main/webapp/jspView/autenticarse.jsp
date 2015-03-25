@@ -12,12 +12,8 @@
 	<c:set var="rView" scope="request" value="${elegirTemaEliminar}"/>
 
 	<form action="/JEE_ECP/jsp/eliminarTema" method="post">
-		<p>Tema:
-			<select name="idTema" >
-				<c:forEach var="tema" items="${rView.temas}">
-					<option value="${tema.id}">${tema.nombre}</option>
-				</c:forEach>
-			</select>
+		<p>Introduzca el identificador:
+			<input type="password" name = "identificadorIntroducido"/>
 		</p>
 		<input type="submit" value="Enviar" />
 	</form>
