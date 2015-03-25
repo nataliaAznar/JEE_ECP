@@ -3,9 +3,11 @@ package views.beans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import controllers.EliminarTemaController;
 import persistence.jpa.Tema;
 
 @ManagedBean
@@ -13,6 +15,7 @@ import persistence.jpa.Tema;
 public class EliminarTemaBean extends ViewBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private static int identificador = 666;
+	private EliminarTemaController eliminarTemaController = this.getControllerFactory().getEliminarTemaController();
 	
 	private String errorText = "";
 	private boolean showError = false;
@@ -21,8 +24,8 @@ public class EliminarTemaBean extends ViewBean implements Serializable{
 	private List<Tema> temas;
 	private int idTema;
 	
-	private boolean disabledTema;
-	private boolean disableDelete;
+	private boolean disabledTema = true;
+	private boolean disabledDelete = true;
 	
 	public EliminarTemaBean() {
 	}
@@ -45,18 +48,18 @@ public class EliminarTemaBean extends ViewBean implements Serializable{
 
 	public void setIdentificadorIntroducido(int identificadorIntroducido) {
 		this.identificadorIntroducido = identificadorIntroducido;
-		if (!checkIdentificador())
+		if (!checkIdentificador()){
 			this.errorText = "Identificador inválido";
-		else
+			disabledTema = true;
+			disabledDelete = true;
+		}else{
 			this.errorText ="";
+			disabledTema = false;
+		}
 	}
 	
 	public boolean checkIdentificador(){
 		return (identificador == identificadorIntroducido);
-	}
-	
-	public String process(){
-		return "home";	
 	}
 
 	public List<Tema> getTemas() {
@@ -73,6 +76,7 @@ public class EliminarTemaBean extends ViewBean implements Serializable{
 
 	public void setIdTema(int idTema) {
 		this.idTema = idTema;
+		disabledDelete = idTema == -1;
 	}
 
 	public boolean isDisabledTema() {
@@ -83,13 +87,24 @@ public class EliminarTemaBean extends ViewBean implements Serializable{
 		this.disabledTema = disabledTema;
 	}
 
-	public boolean isDisableDelete() {
-		return disableDelete;
+	public boolean isDisabledDelete() {
+		return disabledDelete;
 	}
 
-	public void setDisableDelete(boolean disableDelete) {
-		this.disableDelete = disableDelete;
+	public void setDisabledDelete(boolean disabledDelete) {
+		this.disabledDelete = disabledDelete;
 	}
 
+	@PostConstruct
+    public void update() {
+		this.temas = eliminarTemaController.getTemas();
+        this.temas.add(0, new Tema(-1, "Elige", ""));
+        this.idTema = -1;
+    }
+	
+	public String process(){
+		eliminarTemaController.deleteTema(this.idTema);
+		return "home";
+	}
 	
 }
