@@ -26,5 +26,10 @@ public class AñadirTemaBean extends ViewBean implements Serializable{
 	public void setPregunta(String pregunta) {
 		this.pregunta = pregunta;
 	}
+	
+	public String process(){
+		
+		return "home";
+	}
 
 }
