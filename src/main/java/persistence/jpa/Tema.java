@@ -26,6 +26,13 @@ public class Tema {
 		this.nombre = nombre;
 		this.pregunta = pregunta;
 	}
+	
+	
+	public Tema(Integer id, String nombre, String pregunta) {
+		this.id = id;
+		this.nombre = nombre;
+		this.pregunta = pregunta;
+	}
 
 	public Integer getId() {
 		return id;
