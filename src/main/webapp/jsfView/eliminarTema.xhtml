@@ -9,9 +9,23 @@
 <h:body>
 	<h3>Eliminar Tema</h3>
  	<h:form id="eliminarTema">
- 	<p>Introduzca el identificador:
-			<h:inputInt id="identificador" value="#{eliminarTemaBean.identificadorIntroducido}" />
+	 	<p>Introduzca el identificador:
+			<h:inputSecret id="identificador" value="#{eliminarTemaBean.identificadorIntroducido}">
+				<f:ajax execute="@this" render="errorText" />
+			</h:inputSecret>
 		</p>
+		<p><h:outputText id="errorText" value="#{eliminarTemaBean.errorText}" /></p>
+		
+		<p>Tema:
+		<h:selectOneMenu value="#{eliminarTemaBean.idTema}">
+			<f:selectItems value="#{eliminarTemaBean.temas}" var="tema"
+				itemValue="#{tema.id}" itemLabel="#{tema.nombre}" />
+			<f:ajax render="pregunta estudios puntuacion submit" />
+		</h:selectOneMenu>
+		</p>
+		
+		<h:commandButton value="submit" id="submit" type="submit" 
+		action="#{eliminarTemaBean.process()}" />
  	</h:form>
 </h:body>
 </html>
