@@ -4,6 +4,7 @@ public class ControllerFactory {
 	private VotacionesController votacionesController;
 	private VotarController votarController;
 	private AñadirTemaController añadirTemaController;
+	private EliminarTemaController eliminarTemaController;
 	
 	public VotacionesController getVotacionesController(){
 		if(votacionesController==null){
@@ -22,5 +23,11 @@ public class ControllerFactory {
 		if( añadirTemaController == null)
 			añadirTemaController = new AñadirTemaController();
 		return añadirTemaController;
+	}
+	
+	public EliminarTemaController getEliminarTemaController(){
+		if( eliminarTemaController == null)
+			eliminarTemaController = new EliminarTemaController();
+		return eliminarTemaController;
 	}
 }
