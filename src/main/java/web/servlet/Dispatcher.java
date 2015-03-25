@@ -117,6 +117,12 @@ public class Dispatcher extends HttpServlet{
 	        		eliminarTemaBean.update();
 	        	}
 	        	break;
+	        case "eliminarTema":
+	        	EliminarTemaBean eliminarTemaBean = new EliminarTemaBean();
+	        	String idTemaEliminar = request.getParameter("idTema");
+	        	eliminarTemaBean.setIdTema(Integer.valueOf(idTemaEliminar));
+	        	eliminarTemaBean.process();
+	        	break;
         }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
         .forward(request, response);
