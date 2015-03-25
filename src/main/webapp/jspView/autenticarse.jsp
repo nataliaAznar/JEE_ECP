@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:set var="rView" scope="request" value="${elegirTemaEliminar}"/>
+	<c:set var="rView" scope="request" value="${autenticarse}"/>
 
 	<form action="/JEE_ECP/jsp/autenticarse" method="post">
 		<p>Introduzca el identificador:
