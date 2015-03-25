@@ -102,6 +102,20 @@ public class Dispatcher extends HttpServlet{
 	        	añadirTemaBean.setNombre(request.getParameter("nombre"));
 	        	añadirTemaBean.setPregunta(request.getParameter("pregunta"));
 	        	añadirTemaBean.process();
+	        	break;
+	        case "autenticarse":
+	        	AutenticarseBean autenticarseBean = new AutenticarseBean();
+	        	String identificador = request.getParameter("identificadorIntroducido");
+	        	autenticarseBean.setIdentificadorIntroducido(Integer.getInteger(identificador));
+	        	view = autenticarseBean.process();
+	        	if( view.equals("autenticarse")){
+	        		request.setAttribute(view, autenticarseBean);
+	        	}
+	        	else{
+	        		EliminarTemaBean eliminarTemaBean = new EliminarTemaBean();
+	        		request.setAttribute(view, eliminarTemaBean);
+	        	}
+	        	break;
         }
         this.getServletContext().getRequestDispatcher(PATH_ROOT_VIEW + view + ".jsp")
         .forward(request, response);
