@@ -11,10 +11,11 @@
 <body>
 	<c:set var="rView" scope="request" value="${elegirTemaEliminar}"/>
 
-	<form action="/JEE_ECP/jsp/eliminarTema" method="post">
+	<form action="/JEE_ECP/jsp/autenticarse" method="post">
 		<p>Introduzca el identificador:
 			<input type="password" name = "identificadorIntroducido"/>
 		</p>
+		<p>${rView.error}</p>
 		<input type="submit" value="Enviar" />
 	</form>
 </body>

@@ -10,8 +10,7 @@ public class AutenticarseBean extends ViewBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private EliminarTemaController eliminarTemaController = new EliminarTemaController();
 	
-	private List<Tema> temas;
-	private int idTema;
+	private String error = "";
 	
 	public AutenticarseBean() {
 	}
@@ -25,26 +24,13 @@ public class AutenticarseBean extends ViewBean implements Serializable{
 		this.eliminarTemaController = eliminarTemaController;
 	}
 
-	public List<Tema> getTemas() {
-		return temas;
+	public String getError() {
+		return error;
 	}
 
-	public void setTemas(List<Tema> temas) {
-		this.temas = temas;
-	}
-
-	public int getIdTema() {
-		return idTema;
-	}
-
-	public void setIdTema(int idTema) {
-		this.idTema = idTema;
+	public void setError(String error) {
+		this.error = error;
 	}
 	
-	public void update() {
-		this.temas = eliminarTemaController.getTemas();
-        this.temas.add(0, new Tema(-1, "Elige", ""));
-        this.idTema = -1;
-    }
 
 }
