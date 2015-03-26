@@ -4,19 +4,19 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<title>Eliminar Tema</title>
+	<title>#{msgs.li4}</title>
 </h:head>
 <h:body>
-	<h3>Eliminar Tema</h3>
+	<h3>#{msgs.li4}</h3>
  	<h:form id="eliminarTema">
-	 	<p>Introduzca el identificador:
+	 	<p>#{msgs.identificador}:
 			<h:inputSecret id="identificador" value="#{eliminarTemaBean.identificadorIntroducido}">
 				<f:ajax execute="@this" render="errorText tema" />
 			</h:inputSecret>
 		</p>
 		<p><h:outputText id="errorText" value="#{eliminarTemaBean.errorText}" /></p>
 		
-		<p>Tema:
+		<p>#{msgs.tema}:
 		<h:selectOneMenu id = "tema" value="#{eliminarTemaBean.idTema}" disabled="#{eliminarTemaBean.disabledTema}">
 			<f:selectItems value="#{eliminarTemaBean.temas}" var="tema"
 				itemValue="#{tema.id}" itemLabel="#{tema.nombre}" />
@@ -24,8 +24,12 @@
 		</h:selectOneMenu>
 		</p>
 		
-		<h:commandButton value="Eliminar" id="submit" type="submit" disabled="#{eliminarTemaBean.disabledDelete}"
+		<h:commandButton value="#{msgs.eliminar}" id="submit" type="submit" disabled="#{eliminarTemaBean.disabledDelete}"
 		action="#{eliminarTemaBean.process()}" />
  	</h:form>
+ 	<h:form>
+		<h:commandLink action="#{eliminarTemaBean.change('es')}" value="Español" /> | 
+        <h:commandLink action="#{eliminarTemaBean.change('en')}" value="English" />
+	</h:form>
 </h:body>
 </html>
