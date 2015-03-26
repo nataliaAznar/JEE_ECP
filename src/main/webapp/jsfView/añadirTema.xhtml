@@ -4,19 +4,23 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<title>Añadir Tema</title>
+	<title>#{msgs.li3}</title>
 </h:head>
 <h:body> 
-	<h3>Añadir Tema</h3>
+	<h3>#{msgs.li3}</h3>
 	<h:form id="newTema">
-		<p>Tema: 
+		<p>#{msgs.tema}: 
 			<h:inputText id="nombre" value="#{añadirTemaBean.nombre}" />
 		</p>
-		<p>Pregunta: 
+		<p>#{msgs.pregunta}: 
 			<h:inputText id="pregunta" value="#{añadirTemaBean.pregunta}" />
 		</p>
-		<h:commandButton value="Crear" id="submit" type="submit"  
+		<h:commandButton value="#{msgs.crear}" id="submit" type="submit"  
 		action="#{añadirTemaBean.process()}" />
+	</h:form>
+	<h:form>
+		<h:commandLink action="#{añadirTemaBean.change('es')}" value="Español" /> | 
+        <h:commandLink action="#{añadirTemaBean.change('en')}" value="English" />
 	</h:form>
 </h:body>
 </html>
