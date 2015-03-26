@@ -15,8 +15,6 @@ public class HomeBean implements Serializable{
 		this.locale = FacesContext.getCurrentInstance().getExternalContext().getRequestLocale();
 	}
 
-
-
 	public String change(String language) {
         this.locale = new Locale(language);
         FacesContext.getCurrentInstance().getViewRoot().setLocale(locale);
