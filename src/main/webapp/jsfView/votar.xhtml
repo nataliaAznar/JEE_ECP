@@ -4,12 +4,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<title>Votar</title>
+	<title>#{msgs.li2}</title>
 </h:head>
 <h:body> 
-	<h3>Votar</h3>
+	<h3>#{msgs.li2}</h3>
 	<h:form id="f1">
-		<p>Tema:
+		<p>#{msgs.tema}:
 		<h:selectOneMenu value="#{votarBean.idTema}">
 			<f:selectItems value="#{votarBean.temas}" var="tema"
 				itemValue="#{tema.id}" itemLabel="#{tema.nombre}" />
@@ -17,22 +17,26 @@
 		</h:selectOneMenu>
 		</p>
 		
-		<p><h:outputText value="Pregunta: " />
+		<p><h:outputText value="#{msgs.pregunta} " />
 			<h:outputText id="pregunta" value="#{votarBean.pregunta}" />
 		</p>
 		
-		<p>Nivel de estudios:
+		<p>#{msgs.nEstudios}:
 			<h:selectOneListbox id="estudios" value="#{votarBean.estudio}" disabled="#{votarBean.disabledVote}">
 					<f:selectItems value="#{votarBean.estudios}" />
 			</h:selectOneListbox>
 		</p>
-		<p>Puntuación:
+		<p>#{msgs.puntuacion}:
 			<h:selectOneMenu id="puntuacion" value="#{votarBean.puntos}" disabled="#{votarBean.disabledVote}">
 					<f:selectItems value="#{votarBean.puntuacion}" />
 			</h:selectOneMenu>
 		</p>
-		<h:commandButton value="submit" id="submit" type="submit" disabled="#{votarBean.disabledVote}" 
+		<h:commandButton value="#{msgs.enviar}" id="submit" type="submit" disabled="#{votarBean.disabledVote}" 
 		action="#{votarBean.process()}" />
+	</h:form>
+	<h:form>
+		<h:commandLink action="#{votarBean.change('es')}" value="Español" /> | 
+        <h:commandLink action="#{votarBean.change('en')}" value="English" />
 	</h:form>
 </h:body>
 </html>
