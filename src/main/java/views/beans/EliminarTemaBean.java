@@ -28,6 +28,7 @@ public class EliminarTemaBean extends ViewBean implements Serializable{
 	private boolean disabledDelete = true;
 	
 	public EliminarTemaBean() {
+		super();
 	}
 
 	public String getErrorText() {

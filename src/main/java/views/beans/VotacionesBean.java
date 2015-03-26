@@ -17,6 +17,7 @@ public class VotacionesBean extends ViewBean implements Serializable{
 	private String[] estudios = {"ESO", "Bachiller", "Universitario"};
 	
 	public VotacionesBean() {
+		super();
 	}
 
 	public void update() {

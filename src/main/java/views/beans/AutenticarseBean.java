@@ -16,6 +16,7 @@ public class AutenticarseBean extends ViewBean implements Serializable{
 	private int identificadorIntroducido;
 	
 	public AutenticarseBean() {
+		super();
 	}
 
 	public EliminarTemaController getEliminarTemaController() {

@@ -15,6 +15,7 @@ public class ElegirTemaBean extends ViewBean implements Serializable{
 	private int idTema;
 
 	public ElegirTemaBean() {
+		super();
 	}
 
 	public List<Tema> getTemas() {

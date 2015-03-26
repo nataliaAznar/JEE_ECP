@@ -16,6 +16,7 @@ public class AñadirTemaBean extends ViewBean implements Serializable{
 	private AñadirTemaController controller = this.getControllerFactory().getAñadirTemaController();
 	
 	public AñadirTemaBean() {
+		super();
 	}
 
 	public String getNombre() {
