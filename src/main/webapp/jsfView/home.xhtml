@@ -14,5 +14,10 @@
 		<li><a href="/JEE_ECP/jsfView/añadirTema.xhtml">#{msgs.li3}</a></li>
 		<li><a href="/JEE_ECP/jsfView/eliminarTema.xhtml">#{msgs.li4}</a></li>
 	</ul>
+	
+	<h:form>
+		<h:commandLink action="#{homeBean.change('es')}" value="Español" /> | 
+        <h:commandLink action="#{homeBean.change('en')}" value="English" />
+	</h:form>
 </h:body>
 </html>
