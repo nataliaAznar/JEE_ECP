@@ -121,10 +121,18 @@ public class VotarBean extends ViewBean implements Serializable{
     }
 
 	private void updateVote() {
-        pregunta = temas.get((idTema+1)).getPregunta();
+        pregunta = getPregunta(idTema);
         puntos = puntuacion[0];
         disabledVote = idTema == -1;
     }
+	
+	private String getPregunta(int idTema){
+		for(Tema tema: temas){
+			if(idTema==tema.getId())
+				return tema.getPregunta();
+		}
+		return "";
+	}
 	
 	public String process(){
 		ip = this.getIp();
