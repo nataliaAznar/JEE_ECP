@@ -39,17 +39,13 @@ public class EliminarTemaBean extends ViewBean implements Serializable{
 		return showError;
 	}
 
-	public void setShowError(boolean showError) {
-		this.showError = showError;
-	}
-
 	public String getIdentificadorIntroducido() {
 		return identificadorIntroducido;
 	}
 
 	public void setIdentificadorIntroducido(String identificadorIntroducido) {
 		this.identificadorIntroducido = identificadorIntroducido;
-		if (!checkIdentificador()){
+		if (!identificador.equals(identificadorIntroducido)){
 			this.errorText = "Identificador inválido";
 			disabledTema = true;
 			disabledDelete = true;
@@ -58,17 +54,9 @@ public class EliminarTemaBean extends ViewBean implements Serializable{
 			disabledTema = false;
 		}
 	}
-	
-	public boolean checkIdentificador(){
-		return identificador.equals(identificadorIntroducido);
-	}
 
 	public List<Tema> getTemas() {
 		return temas;
-	}
-
-	public void setTemas(List<Tema> temas) {
-		this.temas = temas;
 	}
 
 	public int getIdTema() {
@@ -84,16 +72,8 @@ public class EliminarTemaBean extends ViewBean implements Serializable{
 		return disabledTema;
 	}
 
-	public void setDisabledTema(boolean disabledTema) {
-		this.disabledTema = disabledTema;
-	}
-
 	public boolean isDisabledDelete() {
 		return disabledDelete;
-	}
-
-	public void setDisabledDelete(boolean disabledDelete) {
-		this.disabledDelete = disabledDelete;
 	}
 
 	@PostConstruct
