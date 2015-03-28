@@ -1,19 +1,17 @@
 package views.beans;
 
 import java.io.Serializable;
-import java.util.List;
 
-import persistence.jpa.Tema;
 import controllers.EliminarTemaController;
 
 public class AutenticarseBean extends ViewBean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private static int identificador = 666;
+	private static String identificador = "666";
 	private EliminarTemaController eliminarTemaController = new EliminarTemaController();
 	
 	private String error = "";
 	
-	private int identificadorIntroducido;
+	private String identificadorIntroducido;
 	
 	public AutenticarseBean() {
 		super();
@@ -36,16 +34,16 @@ public class AutenticarseBean extends ViewBean implements Serializable{
 		this.error = error;
 	}
 
-	public int getIdentificadorIntroducido() {
+	public String getIdentificadorIntroducido() {
 		return identificadorIntroducido;
 	}
 
-	public void setIdentificadorIntroducido(int identificadorIntroducido) {
+	public void setIdentificadorIntroducido(String identificadorIntroducido) {
 		this.identificadorIntroducido = identificadorIntroducido;
 	}
 	
 	public String process(){
-		if(this.identificadorIntroducido == this.identificador){
+		if(this.identificadorIntroducido.equals(AutenticarseBean.identificador)){
 			return "eliminarTema";
 		}
 		else{
