@@ -14,12 +14,12 @@ import persistence.jpa.Tema;
 @ViewScoped
 public class EliminarTemaBean extends ViewBean implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private static int identificador = 666;
+	private static String identificador = "666";
 	private EliminarTemaController eliminarTemaController = this.getControllerFactory().getEliminarTemaController();
 	
 	private String errorText = "";
 	private boolean showError = false;
-	private int identificadorIntroducido;
+	private String identificadorIntroducido;
 	
 	private List<Tema> temas;
 	private int idTema;
@@ -43,11 +43,11 @@ public class EliminarTemaBean extends ViewBean implements Serializable{
 		this.showError = showError;
 	}
 
-	public int getIdentificadorIntroducido() {
+	public String getIdentificadorIntroducido() {
 		return identificadorIntroducido;
 	}
 
-	public void setIdentificadorIntroducido(int identificadorIntroducido) {
+	public void setIdentificadorIntroducido(String identificadorIntroducido) {
 		this.identificadorIntroducido = identificadorIntroducido;
 		if (!checkIdentificador()){
 			this.errorText = "Identificador inválido";
@@ -60,7 +60,7 @@ public class EliminarTemaBean extends ViewBean implements Serializable{
 	}
 	
 	public boolean checkIdentificador(){
-		return (identificador == identificadorIntroducido);
+		return identificador.equals(identificadorIntroducido);
 	}
 
 	public List<Tema> getTemas() {
