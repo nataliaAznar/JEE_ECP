@@ -18,5 +18,6 @@
 		<p>${rView.error}</p>
 		<input type="submit" value="Enviar" />
 	</form>
+	<a href="/JEE_ECP/jsp/home">Volver a Home</a>
 </body>
 </html>

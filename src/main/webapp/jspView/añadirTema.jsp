@@ -17,5 +17,6 @@
 		<p>Pregunta: <input type="text" name="pregunta"/> </p>
 		<input type="submit" value="Crear" />
 	</form>
+	<a href="/JEE_ECP/jsp/home">Volver a Home</a>
 </body>
 </html>

@@ -31,5 +31,6 @@
 				</li>
 			</c:forEach>
 		</ul>
+		<a href="/JEE_ECP/jsp/home">Volver a Home</a>
 </body>
 </html>
