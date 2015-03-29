@@ -121,7 +121,7 @@ public class VotarBean extends ViewBean implements Serializable{
     }
 
 	private void updateVote() {
-        pregunta = getPregunta(idTema);
+        pregunta = getPregunta(idTema); 
         puntos = puntuacion[0];
         disabledVote = idTema == -1;
     }
