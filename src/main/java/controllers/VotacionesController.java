@@ -39,8 +39,8 @@ public class VotacionesController {
 			int idTema = voto.getTema().getId();
 			if(idTema == id){
 				votacion[NUMERO_VOTOS] = votacion[NUMERO_VOTOS] + 1;
-				votacion[voto.getEstudios()] = (votacion[voto.getEstudios()] + voto.getPuntuacion());
-				datosAuxiliares[voto.getEstudios()] = datosAuxiliares[voto.getEstudios()] + 1;
+				votacion[voto.getEstudios()+1] = (votacion[voto.getEstudios()+1] + voto.getPuntuacion());
+				datosAuxiliares[voto.getEstudios()+1] = datosAuxiliares[voto.getEstudios()+1] + 1;
 			}
 		}
 		votacion = calcularMedias(votacion, datosAuxiliares);
